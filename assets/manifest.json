@@ -1,0 +1,29 @@
+{
+    "dependencies": {
+        "main.js": {
+            "files": [
+                "scripts/main.js"
+            ],
+            "vendor": [
+            ],
+            "main": true
+        },
+        "main.css": {
+            "files": "styles/main.scss",
+            "vendor": [
+            ],
+            "main": true
+        },
+        "customizer.js": {
+            "files": [
+                "scripts/customizer.js"
+            ]
+        },
+        "jquery.js": {
+            "bower": ["jquery"]
+        }
+    },
+    "config": {
+        "devUrl": "http://localhost/ariflaw"
+    }
+}
