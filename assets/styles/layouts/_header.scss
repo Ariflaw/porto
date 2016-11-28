@@ -1,0 +1,141 @@
+// HERO STYLE
+// ======================================================================== /
+#hero {
+    position: relative;
+    height: 80vh;
+    background-image: url('../images/hero_bg.jpg');
+    background-position: center;
+    background-size: cover;
+    z-index: 0;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba( 0, 0, 0, 0.75 );
+        z-index: -1;
+    }
+}
+
+// ======================================================================== /
+// MAIN STYLE
+// ======================================================================== /
+.main_header {
+    padding: 40px 0 20px;
+
+    a {
+        color: $w;
+    }
+
+    // BRAND
+    // ======================================================================== /
+    .brand {
+        float: left;
+        display: inline-block;
+
+        img {
+            height: 25px;
+        }
+    }
+
+    // NAV PRIMARY
+    // ======================================================================== /
+    .nav_primary {
+        float: right;
+        display: inline-block;
+
+        .nav {
+            display: inline-block;
+
+            li {
+                display: inline-block;
+
+                &.btn {
+                    padding: 0;
+
+                    a {
+                        background-color: $w;
+                        color: $color_3;
+                        line-height: 1.2;
+                        padding: 6px 18px;
+                        border-radius: 2px;
+                    }
+
+                    &:before {
+                        display: inline-block;
+                        content: 'or';
+                        font-size: 1rem;
+                        font-style: italic;
+                        line-height: 1.2;
+                        position: relative;
+                        color: $w;
+                        padding-right: 20px;
+                        cursor: auto;
+                        margin-bottom: 4px;
+                    }
+                }
+            }
+
+            a {
+                padding: 0 20px;
+                font-weight: 700;
+
+                &:hover, &:active, &:focus {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+}
+
+
+// ======================================================================== /
+// HERO CONTENT
+// ======================================================================== /
+.hero_content {
+    position: absolute;
+    top: 38%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    color: $w;
+
+    .page_title {
+        font-size: 42px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 15px;
+    }
+
+    .page_des {
+        font-family: "PT Serif", Arial, sans-serif;
+        font-size: 20px;
+        font-style: italic;
+        margin-bottom: 0;
+    }
+}
+
+// ======================================================================== /
+// HERO PROFILE
+// ======================================================================== /
+.hero_profile {
+    position: absolute;
+    bottom: -60px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+
+    img {
+        width: 120px;
+        height: 120px;
+        border-radius: 100%;
+        border: 4px solid $w;
+    }
+}
