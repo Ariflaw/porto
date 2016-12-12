@@ -3,6 +3,7 @@
 // Automatically injected Bower dependencies via wiredep (never manually edit this block)
 // bower:scss
 @import "../../bower_components/bootstrap/scss/bootstrap.scss";
+@import "../../bower_components/simple-line-icons/scss/simple-line-icons.scss";
 // endbower
 
 @import "common/global";
@@ -11,9 +12,11 @@
 @import "components/forms";
 @import "components/grid";
 @import "components/wp-classes";
+
 @import "layouts/header";
 @import "layouts/sidebar";
 @import "layouts/footer";
 @import "layouts/pages";
+@import "layouts/single";
 @import "layouts/posts";
 @import "layouts/tinymce";

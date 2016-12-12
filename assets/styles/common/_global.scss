@@ -18,3 +18,33 @@ body {
     -webkit-font-smoothing: antialiased !important;
 	-moz-osx-font-smoothing: grayscale !important;
 }
+
+a {
+    color: $primary;
+
+    &:hover, &:active, &:focus {
+        color: $primary;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font_title;
+    font-weight: 700;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.dot::before {
+    position: relative;
+    display: inline-block;
+    content: '';
+    width: 4px;
+    height: 4px;
+    background-color: $color_entry_title;
+    border-radius: 100%;
+    margin: 0 10px 2px;
+    vertical-align: middle;
+}

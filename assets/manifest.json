@@ -5,6 +5,7 @@
                 "scripts/main.js"
             ],
             "vendor": [
+                "scripts/love.js"
             ],
             "main": true
         },

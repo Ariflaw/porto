@@ -1,6 +1,90 @@
-.content-info {
-    background-color: #000;
-    color: #333;
-    margin: 0;
-    padding: 20px 0;
+.site-footer {
+    position: relative;
+    background-image: url('../../dist/images/bg_footer.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    border-top: 1px solid #F4F4F4;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba( 255, 255, 255, 0.75 );
+        z-index: -1;
+    }
+
+    .footer_content {
+        padding-top: 80px;
+        padding-bottom: 60px;
+        text-align: center;
+
+        .footer_logo {
+            img {
+                width: 178px;
+            }
+        }
+
+        .footer_social {
+            list-style-type: none;
+            margin: 45px 0 0;
+            padding: 0;
+
+            li {
+                display: inline-block;
+                padding: 2px 0;
+
+                a {
+                    letter-spacing: 0;
+
+                    &.dribble {
+                        color: $dribbble;
+                    }
+                    &.facebook {
+                        color: $facebook;
+                    }
+                    &.github {
+                        color: $github;
+                    }
+                    &.linkedin {
+                        color: $linkedin;
+                    }
+
+                    &:hover, &:focus, &:active {
+                        text-decoration: none;
+                    }
+                }
+
+                .dot::before {
+                    content: '';
+                    position: relative;
+                    display: inline-block;
+                    content: '';
+                    width: 5px;
+                    height: 5px;
+                    background-color: $color_3;
+                    opacity: 0.3;
+                    border-radius: 100%;
+                    margin: 0 20px 2px;
+                    vertical-align: middle
+                }
+            }
+        }
+    }
+
+    .site-info {
+        padding: 20px;
+        text-align: center;
+        font-family: $font_title;
+        font-size: 13px;
+        font-style: italic;
+        border-top: 1px solid $e;
+
+        a {
+            font-weight: 700;
+        }
+    }
 }

@@ -3,10 +3,40 @@ $enable-flex:           true;
 $main-sm-columns:       12;
 $sidebar-sm-columns:    4;
 
-// Colors
-$primary:               #00A8E8;
-$body_font:             #4C4C4C;
 
+// FONT
+$font_title:            "PT Serif", Arial, sans-serif;
+
+
+// Colors
 $w:                     #FFFFFF;
-$color_3:                     #333333;
+$color_3:               #333333;
 $e:                     #EEEEEE;
+$c555:                  #555555;
+$c777:                  #777777;
+$ceb:                   #EBEBEB;
+
+
+$primary:               #00A8E8;
+$color_title:           #00171F;
+$body_font:             #4C4C4C;
+$bg_fa:                 #FAFAFA;
+$bg_single:             #F5F5F5;
+$color_moderator:       #ff2525;
+
+$border_img:            #E6E6E6;
+$bdr_comment:           #dfdfdf;
+$color_title:           #00171F;
+$color_entry_title:     $c777;
+$color_excerpt:         #4C4C4C;
+
+$dribbble:              #EA4C89;
+$facebook:              #3B5998;
+$google:                #ccc;
+$github:                $color_3;
+$twitter:               #000000;
+$linkedin:              #0077B5;
+
+
+// Breakpoint
+$md:                    768px;
