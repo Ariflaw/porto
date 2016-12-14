@@ -276,7 +276,7 @@ if ( ! function_exists('customize_comment_form') ) {
         $args['id_submit'] = 'delete-submit';
         $args['comment_field'] = '<div class="form-group comment-form-comment">
         <label for="comment" class="hidden">' . _x( 'Comment', 'text_domain' ) . '</label>
-        <textarea class="form-control" id="comment" placeholder="Message..." name="comment" cols="45" rows="10" aria-required="true"></textarea>
+        <textarea class="form-control" id="comment" placeholder="Messages..." name="comment" cols="45" rows="10" aria-required="true"></textarea>
         </div>';
         return $args;
     }
@@ -405,6 +405,8 @@ function legal_station_post_love_add_love() {
     die();
 }
 
+
+// http://wpsites.org/like-button-without-plugin-10570/
 // function legal_station_post_love_display( ) {
 //     global $post;
 //     $like_text = '';
@@ -448,3 +450,11 @@ function legal_station_post_love_add_love() {
 //         exit();
 //     }
 // }
+
+// Removes a class from the body_class array.
+add_filter( 'body_class', function( $classes ) {
+    if ( is_tag() && isset( $classes['tag'] ) ) {
+        unset( $classes['tag'] );
+    }
+    return $classes;
+} );

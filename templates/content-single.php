@@ -20,8 +20,8 @@
 
 <?php endwhile; ?>
 
-<div class="pagination">
+<!-- <div class="pagination">
     <?php the_post_navigation(); ?>
-</div>
+</div> -->
 
 <?php Roots\Sage\Extras\setPostViews(get_the_ID()); ?>
