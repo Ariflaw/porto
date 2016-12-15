@@ -6,10 +6,12 @@ $sidebar-sm-columns:    4;
 
 // FONT
 $font_title:            "PT Serif", Arial, sans-serif;
+$font_body:             "Lato", Arial, sans-serif;
 
 
 // Colors
 $w:                     #FFFFFF;
+$cfc:                   #FCFCFC;
 $color_3:               #333333;
 $e:                     #EEEEEE;
 $c555:                  #555555;
@@ -23,6 +25,7 @@ $body_font:             #4C4C4C;
 $bg_fa:                 #FAFAFA;
 $bg_single:             #F5F5F5;
 $color_moderator:       #ff2525;
+$bg_author_info:        $cfc;
 
 $border_img:            #E6E6E6;
 $bdr_comment:           #dfdfdf;

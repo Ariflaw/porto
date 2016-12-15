@@ -14,6 +14,7 @@
             <a href="#">Back to top <i class="icon icon-arrow-up"></i></a>
         </div>
     </div>
+    <?php get_template_part('templates/author_info'); ?>
     <footer>
         <?php comments_template('/templates/comments.php'); ?>
     </footer>

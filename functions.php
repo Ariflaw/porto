@@ -16,7 +16,7 @@ $sage_includes = [
     'lib/titles.php',    // Page titles
     'lib/wrapper.php',   // Theme wrapper class
     'lib/customizer.php', // Theme customizer
-    'lib/admin/admin-init.php',
+    'lib/admin/admin-init.php', // Theme Options by Redux
 ];
 
 foreach ($sage_includes as $file) {

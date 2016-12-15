@@ -324,6 +324,61 @@
 }
 
 
+// INFO AUTHOR BOX
+// ======================================================================== /
+.info_author_box {
+    position: relative;
+    background-color: $bg_author_info;
+    padding: 65px 50px 50px;
+    margin: 100px 0 60px;
+    text-align: center;
+    border-top: 1px solid $bg_single;
+    border-bottom: 1px solid $bg_single;
+
+    .avatar {
+        position: absolute;
+        top: -50px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        text-align: center;
+
+        border-radius: 100%;
+        padding: 5px;
+        background-color: $w;
+        border: 2px solid $bg_single;
+    }
+
+    .author_name {
+        font-size: 24px;
+        letter-spacing: 0.5px;
+        margin-bottom: 20px;
+
+        span {
+            display: block;
+            text-transform: uppercase;
+            font-family: $font_body;
+            font-size: 13px;
+            font-weight: 800;
+            color: $c777;
+            opacity: 0.4;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+    }
+
+    .info_author_content {
+        max-width: 520px;
+        margin: 0 auto;
+
+        font-family: $font_title;
+        font-style: italic;
+        color: $c777;
+        line-height: 22px;
+    }
+}
+
+
 // COMMENTS STYLE
 // ======================================================================== /
 #comments {
