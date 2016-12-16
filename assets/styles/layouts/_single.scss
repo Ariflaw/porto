@@ -170,6 +170,11 @@
                 }
 
                 .tags-links {
+                    @media screen and ( min-width: $sm ) {
+                        display: inline-block;
+                        width: 85%;
+                    }
+
                     a {
                         display: inline-block;
                         margin: 3px 3px 3px 0;
@@ -186,6 +191,13 @@
                 .post_bt {
                     float: right;
                     line-height: 30px;
+
+                    @media screen and ( max-width: $sm ) {
+                        float: none;
+                        text-align: center;
+                        margin: 25px auto 0;
+                        // margin-top: 15px;
+                    }
 
                     a {
                         &:hover, &:active, &:focus {
@@ -221,9 +233,9 @@
     p {
         margin-bottom: 22px;
 
-        & > img {
-            margin-bottom: 0;
-        }
+        // & > img {
+        //     margin-bottom: 0;
+        // }
     }
 
     img {
@@ -426,6 +438,10 @@
 
                     a {
                         color: $color_title;
+
+                        &:hover, &:active, &:focus {
+                            color: $primary;
+                        }
                     }
                 }
 

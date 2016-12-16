@@ -5,7 +5,8 @@
                 "scripts/main.js"
             ],
             "vendor": [
-                "scripts/love.js"
+                "scripts/love.js",
+                "../../bower_components/headroom.js/dist/headroom.min.js"
             ],
             "main": true
         },

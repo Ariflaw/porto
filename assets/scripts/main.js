@@ -19,6 +19,20 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+
+
+        $(".main_header").headroom({
+            "offset": 0,
+            "tolerance": 20,
+            "classes": {
+                "initial": "animated",
+                // "pinned": "swingInX",
+                "pinned": "slideDown",
+                // "unpinned": "swingOutX",
+                "unpinned": "slideUp",
+            }
+        });
+
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

@@ -12,7 +12,7 @@ $font_body:             "Lato", Arial, sans-serif;
 // Colors
 $w:                     #FFFFFF;
 $cfc:                   #FCFCFC;
-$color_3:               #333333;
+$c333:                  #333333;
 $e:                     #EEEEEE;
 $c555:                  #555555;
 $c777:                  #777777;
@@ -36,10 +36,11 @@ $color_excerpt:         #4C4C4C;
 $dribbble:              #EA4C89;
 $facebook:              #3B5998;
 $google:                #ccc;
-$github:                $color_3;
+$github:                $c333;
 $twitter:               #000000;
 $linkedin:              #0077B5;
 
 
 // Breakpoint
 $md:                    768px;
+$sm:                    480px;

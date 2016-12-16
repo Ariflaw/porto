@@ -1,4 +1,7 @@
 <?php
+// Info Author Box
+// https://developer.wordpress.org/reference/functions/get_the_author_meta/
+
 global $post;
 
 // Detect if it is a single post with a post author

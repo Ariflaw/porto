@@ -1,0 +1,268 @@
+// ======================================================================== /
+// HEADER FIXED AND HEADROOM CLASS
+// ======================================================================== /
+.logged-in {
+    .main_header.headroom--not-top {
+        top: 32px;
+    }
+}
+
+.main_header.headroom--not-top {
+    position: fixed;
+    z-index: 9999;
+    right: 0;
+    left: 0;
+    top: 0;
+    background-color: $w;
+    color: $c777;
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid $bg_single;
+
+    // &.swingOutX {
+    //     background-color: transparent;
+    // }
+
+    .brand {
+        .logo_white {
+            display: none;
+        }
+        
+        .logo_black {
+            display: block;
+        }
+    }
+
+    .nav_primary {
+        .nav {
+            li.btn_hire {
+
+                a {
+                    background-color: $c333;
+                    color: $w;
+                }
+
+                &::before {
+                    color: $c333;
+                }
+            }
+        }
+
+        a {
+            color: $c333;
+        }
+    }
+
+}
+
+.animated {
+  -webkit-animation-duration: 0.5s;
+     -moz-animation-duration: 0.5s;
+       -o-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+     -moz-animation-fill-mode: both;
+       -o-animation-fill-mode: both;
+          animation-fill-mode: both;
+  will-change: transform, opacity;
+}
+
+
+// ANIMATION SWINGINX
+// ======================================================================== /
+@-webkit-keyframes swingInX {
+    0% {
+        -webkit-transform: perspective(400px) rotateX(-90deg);
+    }
+
+    100% {
+        -webkit-transform: perspective(400px) rotateX(0deg);
+    }
+}
+@-moz-keyframes swingInX {
+    0% {
+        -moz-transform: perspective(400px) rotateX(-90deg);
+    }
+
+    100% {
+        -moz-transform: perspective(400px) rotateX(0deg);
+    }
+}
+@-o-keyframes swingInX {
+    0% {
+        -o-transform: perspective(400px) rotateX(-90deg);
+    }
+
+    100% {
+        -o-transform: perspective(400px) rotateX(0deg);
+    }
+}
+@keyframes swingInX {
+    0% {
+        transform: perspective(400px) rotateX(-90deg);
+    }
+
+    100% {
+        transform: perspective(400px) rotateX(0deg);
+    }
+}
+
+.animated.swingInX {
+  -webkit-transform-origin: top;
+  -moz-transform-origin: top;
+  -ie-transform-origin: top;
+  -o-transform-origin: top;
+  transform-origin: top;
+
+  -webkit-backface-visibility: visible !important;
+  -webkit-animation-name: swingInX;
+  -moz-backface-visibility: visible !important;
+  -moz-animation-name: swingInX;
+  -o-backface-visibility: visible !important;
+  -o-animation-name: swingInX;
+  backface-visibility: visible !important;
+  animation-name: swingInX;
+}
+
+@-webkit-keyframes swingOutX {
+    0% {
+        -webkit-transform: perspective(400px) rotateX(0deg);
+    }
+  100% {
+        -webkit-transform: perspective(400px) rotateX(-90deg);
+    }
+}
+
+@-moz-keyframes swingOutX {
+    0% {
+        -moz-transform: perspective(400px) rotateX(0deg);
+    }
+  100% {
+        -moz-transform: perspective(400px) rotateX(-90deg);
+    }
+}
+
+@-o-keyframes swingOutX {
+    0% {
+        -o-transform: perspective(400px) rotateX(0deg);
+    }
+  100% {
+        -o-transform: perspective(400px) rotateX(-90deg);
+    }
+}
+
+@keyframes swingOutX {
+    0% {
+        transform: perspective(400px) rotateX(0deg);
+    }
+  100% {
+        transform: perspective(400px) rotateX(-90deg);
+    }
+}
+
+.animated.swingOutX {
+  -webkit-transform-origin: top;
+  -webkit-animation-name: swingOutX;
+  -webkit-backface-visibility: visible !important;
+  -moz-animation-name: swingOutX;
+  -moz-backface-visibility: visible !important;
+  -o-animation-name: swingOutX;
+  -o-backface-visibility: visible !important;
+  animation-name: swingOutX;
+  backface-visibility: visible !important;
+}
+
+
+// ANIMATION SLIDEUP
+// ======================================================================== /
+@-webkit-keyframes slideDown {
+  0% {
+    -webkit-transform: translateY(-100%);
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+
+@-moz-keyframes slideDown {
+  0% {
+    -moz-transform: translateY(-100%);
+  }
+
+  100% {
+    -moz-transform: translateY(0);
+  }
+}
+
+@-o-keyframes slideDown {
+  0% {
+    -o-transform: translateY(-100%);
+  }
+
+  100% {
+    -o-transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animated.slideDown {
+  -webkit-animation-name: slideDown;
+  -moz-animation-name: slideDown;
+  -o-animation-name: slideDown;
+  animation-name: slideDown;
+}
+
+@-webkit-keyframes slideUp {
+  0% {
+    -webkit-transform: translateY(0);
+  }
+
+  100% {
+    -webkit-transform: translateY(-100%);
+  }
+}
+@-moz-keyframes slideUp {
+  0% {
+    -moz-transform: translateY(0);
+  }
+
+  100% {
+    -moz-transform: translateY(-100%);
+  }
+}
+@-o-keyframes slideUp {
+  0% {
+    -o-transform: translateY(0);
+  }
+
+  100% {
+    -o-transform: translateY(-100%);
+  }
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.animated.slideUp {
+  -webkit-animation-name: slideUp;
+  -moz-animation-name: slideUp;
+  -o-animation-name: slideUp;
+  animation-name: slideUp;
+}

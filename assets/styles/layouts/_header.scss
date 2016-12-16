@@ -24,9 +24,11 @@
 // MAIN STYLE
 // ======================================================================== /
 .main_header {
-    position: relative;
+    position: absolute;
     z-index: 9999;
     padding: 40px 0 20px;
+    width: 100%;
+    background-color: transparent;
 
     a {
         color: $w;
@@ -40,6 +42,10 @@
 
         img {
             height: 25px;
+        }
+
+        .logo_black {
+            display: none;
         }
     }
 
@@ -60,7 +66,7 @@
 
                     a {
                         background-color: $w;
-                        color: $color_3;
+                        color: $c333;
                         line-height: 1.2;
                         padding: 6px 18px;
                         border-radius: 2px;

@@ -1,22 +1,25 @@
 <?php namespace Roots\Sage\Extras; ?>
+<div class="main_header">
+    <div class="container clearfix">
+        <div class="brand">
+            <a class="logo logo_white" href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/Logo.png" /></a>
+            <a class="logo logo_black" href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/logo-black.png" /></a>
+        </div>
+        <nav class="nav_primary">
+            <?php
+            if (has_nav_menu('primary_navigation')) :
+                wp_nav_menu([
+                    'theme_location' => 'primary_navigation',
+                    'menu_class'     => 'nav'
+                ]);
+            endif;
+            ?>
+        </nav>
+    </div>
+</div>
+
 <header id="hero" class="hero_header" <?php header_img_bg(); ?>>
     <div class="container">
-        <div class="main_header clearfix">
-            <div class="brand">
-                <a class="logo" href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/Logo.png" /></a>
-            </div>
-            <nav class="nav_primary">
-                <?php
-                if (has_nav_menu('primary_navigation')) :
-                    wp_nav_menu([
-                        'theme_location' => 'primary_navigation',
-                        'menu_class'     => 'nav'
-                    ]);
-                endif;
-                ?>
-            </nav>
-        </div>
-
         <?php if ( is_blog_page() ): ?>
             <div class="hero_content">
                 <h1 class="page_title"><?php echo esc_html('Blog'); ?></h1>
