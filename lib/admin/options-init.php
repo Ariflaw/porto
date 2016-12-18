@@ -196,6 +196,158 @@
         )
     ) );
 
+    /**
+     * ============================================================================
+     * FOOTER
+     * ============================================================================
+     */
+    Redux::setSection( $opt_name, array(
+        'title' => __( 'Footer', 'redux-framework-demo' ),
+        'id'    => 'footer',
+        'desc'  => __( 'Basic fields as subsections.', 'redux-framework-demo' ),
+        'icon'  => 'el el-website',
+        'fields'     => array(
+            array(
+                'id'       => 'textarea-example3',
+                'type'     => 'textarea',
+                'title'    => __( 'Text Area Field', 'redux-framework-demo' ),
+                'subtitle' => __( 'Subtitle', 'redux-framework-demo' ),
+                'desc'     => __( 'Field Description', 'redux-framework-demo' ),
+                'default'  => 'Default Text',
+            ),
+        )
+    ) );
+
+    Redux::setSection( $opt_name, array(
+        'title' => __( 'Footer', 'porto' ),
+        'id'    => 'footer',
+        'desc'  => __( 'Basic fields as subsections.', 'porto' ),
+        'icon'  => 'el el-website',
+    ) );
+
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Social Accounts', 'porto' ),
+        'desc'       => __( 'Paste your social acoounts on the fields.', 'porto' ),
+        'id'         => 'social-accounts',
+        'subsection' => true,
+        'fields'     => array(
+            array(
+                'id'       => 'social-faceboook',
+                'type'     => 'text',
+                'title'    => __( 'Facebook URL', 'porto' ),
+                // 'subtitle' => __( '', 'porto' ),
+                // 'desc'     => __( 'Field Description', 'porto' ),
+                'validate' => 'url',
+                'validate' => 'url',
+                'placeholder'  => 'https://www.facebook.com/',
+            ),
+            array(
+                'id'       => 'social-twitter',
+                'type'     => 'text',
+                'title'    => __( 'Twitter URL', 'porto' ),
+                // 'subtitle' => __( '', 'porto' ),
+                // 'desc'     => __( 'Field Description', 'porto' ),
+                'validate' => 'url',
+                'placeholder'  => 'https://twitter.com/',
+            ),
+            array(
+                'id'       => 'social-google',
+                'type'     => 'text',
+                'title'    => __( 'Google+ URL', 'porto' ),
+                // 'subtitle' => __( '', 'porto' ),
+                // 'desc'     => __( 'Field Description', 'porto' ),
+                'validate' => 'url',
+                'placeholder'  => 'https://plus.google.com/',
+            ),
+            array(
+                'id'       => 'social-linkedin',
+                'type'     => 'text',
+                'title'    => __( 'LinkedIn URL', 'porto' ),
+                // 'subtitle' => __( '', 'porto' ),
+                // 'desc'     => __( 'Field Description', 'porto' ),
+                'validate' => 'url',
+                'placeholder'  => 'https://www.linkedin.com/',
+            ),
+            array(
+                'id'       => 'social-github',
+                'type'     => 'text',
+                'title'    => __( 'Github URL', 'porto' ),
+                // 'subtitle' => __( '', 'porto' ),
+                // 'desc'     => __( 'Field Description', 'porto' ),
+                'validate' => 'url',
+                'placeholder'  => 'https://github.com/',
+            ),
+            array(
+                'id'       => 'social-dribbble',
+                'type'     => 'text',
+                'title'    => __( 'Dribbble URL', 'porto' ),
+                // 'subtitle' => __( '', 'porto' ),
+                // 'desc'     => __( 'Field Description', 'porto' ),
+                'validate' => 'url',
+                'placeholder'  => 'https://dribbble.com/',
+            ),
+            array(
+                'id'       => 'social-behance',
+                'type'     => 'text',
+                'title'    => __( 'Behance URL', 'porto' ),
+                // 'subtitle' => __( '', 'porto' ),
+                // 'desc'     => __( 'Field Description', 'porto' ),
+                'validate' => 'url',
+                'placeholder'  => 'https://www.behance.net/',
+            ),
+            array(
+                'id'       => 'social-codepen',
+                'type'     => 'text',
+                'title'    => __( 'Codepen URL', 'porto' ),
+                // 'subtitle' => __( '', 'porto' ),
+                // 'desc'     => __( 'Field Description', 'porto' ),
+                'validate' => 'url',
+                'placeholder'  => 'https://www.codepen.io/',
+            ),
+            array(
+                'id'       => 'social-stackoverflow',
+                'type'     => 'text',
+                'title'    => __( 'Stackoverflow URL', 'porto' ),
+                // 'subtitle' => __( '', 'porto' ),
+                // 'desc'     => __( 'Field Description', 'porto' ),
+                'validate' => 'url',
+                'placeholder'  => 'https://stackoverflow.com/',
+            ),
+            array(
+                'id'       => 'social-instagram',
+                'type'     => 'text',
+                'title'    => __( 'Instagram URL', 'porto' ),
+                // 'subtitle' => __( '', 'porto' ),
+                // 'desc'     => __( 'Field Description', 'porto' ),
+                'validate' => 'url',
+                'placeholder'  => 'https://www.instagram.com/',
+            ),
+        )
+    ) );
+
+
+    Redux::setSection( $opt_name, array(
+        'title' => __( 'Copyright', 'redux-framework-demo' ),
+        'id'    => 'copyright',
+        'desc'  => __( 'Basic fields as subsections.', 'redux-framework-demo' ),
+        'subsection' => true,
+        'fields'     => array(
+            array(
+                'id'       => 'copyright-text',
+                'type'     => 'editor',
+                'title'    => __( 'Copyright Text Field', 'redux-framework-demo' ),
+                // 'subtitle' => __( 'Subtitle', 'redux-framework-demo' ),
+                // 'desc'     => __( 'Field Description', 'redux-framework-demo' ),
+                // 'placeholder'  => 'Default Text',
+                'args'   => array(
+                    'teeny'            => true,
+                    'media_buttons'    => false,
+                    'textarea_rows'    => 10
+                )
+            ),
+        )
+    ) );
+
     /*
      * <--- END SECTIONS
      */

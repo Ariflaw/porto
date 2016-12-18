@@ -23,13 +23,13 @@
 
         $(".main_header").headroom({
             "offset": 0,
-            "tolerance": 20,
+            "tolerance": 10,
             "classes": {
                 "initial": "animated",
-                // "pinned": "swingInX",
-                "pinned": "slideDown",
-                // "unpinned": "swingOutX",
-                "unpinned": "slideUp",
+                "pinned": "swingInX",
+                "unpinned": "swingOutX",
+                // "pinned": "slideDown",
+                // "unpinned": "slideUp",
             }
         });
 

@@ -29,28 +29,49 @@
         }
 
         .footer_social {
+            max-width: 720px;
             list-style-type: none;
-            margin: 45px 0 0;
+            margin: 45px auto 0;
             padding: 0;
 
             li {
                 display: inline-block;
                 padding: 2px 0;
+                margin-bottom: 6px;
 
                 a {
+                    text-transform: capitalize;
                     letter-spacing: 0;
 
-                    &.dribble {
-                        color: $dribbble;
-                    }
                     &.facebook {
                         color: $facebook;
+                    }
+                    &.twitter {
+                        color: $twitter;
+                    }
+                    &.google {
+                        color: $google;
                     }
                     &.github {
                         color: $github;
                     }
+                    &.dribbble {
+                        color: $dribbble;
+                    }
                     &.linkedin {
                         color: $linkedin;
+                    }
+                    &.behance {
+                        color: $behance;
+                    }
+                    &.codepen {
+                        color: $codepen;
+                    }
+                    &.stackoverflow {
+                        color: $stackoverflow;
+                    }
+                    &.instagram {
+                        color: $instagram;
                     }
 
                     &:hover, &:focus, &:active {

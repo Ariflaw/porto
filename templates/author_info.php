@@ -17,12 +17,13 @@ if ( is_single() && isset( $post->post_author ) ) {
     $user_website = get_the_author_meta('url', $post->post_author);
     // Get link to the author archive page
     $user_posts = get_author_posts_url( get_the_author_meta( 'ID' , $post->post_author));
+    $user_link_author = get_author_posts_url( get_the_author_meta( 'ID', $post->post_author ));
 }
 
  ?>
 <div class="info_author_box">
     <?php echo get_avatar( get_the_author_meta( 'ID' ), 100 ); ?>
-    <h4 class="author_name"><span>Author</span><?php echo $display_name; ?></h4>
+    <h4 class="author_name"><span>Author</span><a href="<?php echo $user_link_author; ?>"><?php echo $display_name; ?></a></h4>
     <div class="info_author_content">
         <?php if ( ! empty($user_description) ) {
                 echo nl2br($user_description);

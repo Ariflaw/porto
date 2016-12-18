@@ -452,9 +452,9 @@ function legal_station_post_love_add_love() {
 // }
 
 // Removes a class from the body_class array.
-add_filter( 'body_class', function( $classes ) {
-    if ( is_tag() && isset( $classes['tag'] ) ) {
-        unset( $classes['tag'] );
-    }
-    return $classes;
-} );
+// add_filter( 'body_class', function( $classes ) {
+//     if ( is_tag() && isset( $classes['tag'] ) ) {
+//         unset( $classes['tag'] );
+//     }
+//     return $classes;
+// } );
