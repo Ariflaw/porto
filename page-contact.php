@@ -1,4 +1,18 @@
+<?php
+/*
+Template Name: Contact Page
+Template Post Type: post, page, portfolio
+*/
+// Page code here...
+
+?>
+
+<h1>show the contacts page </h1>
+
 <?php while (have_posts()) : the_post(); ?>
+
+    <h1>Single Portolio</h1>
+
     <header>
         <?php get_template_part('templates/entry-meta'); ?>
     </header>
@@ -14,15 +28,8 @@
             <a href="#/" class="ct-btn">Back to top <i class="icon icon-arrow-up"></i></a>
         </div>
     </div>
-    <?php get_template_part('templates/author_info'); ?>
     <footer>
         <?php comments_template('/templates/comments.php'); ?>
     </footer>
 
 <?php endwhile; ?>
-
-<!-- <div class="pagination">
-    <?php the_post_navigation(); ?>
-</div> -->
-
-<?php setPostViews(get_the_ID()); ?>

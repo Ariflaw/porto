@@ -172,7 +172,7 @@
                 .tags-links {
                     @media screen and ( min-width: $sm ) {
                         display: inline-block;
-                        width: 85%;
+                        width: 72%;
                     }
 
                     a {
@@ -200,8 +200,8 @@
                     }
 
                     a {
-                        &:hover, &:active, &:focus {
-                            text-decoration: none;
+                        text-decoration: none;
+                        &:hover {
                             color: $primary;
                             border-color: $primary;
                         }
@@ -421,6 +421,7 @@
         .comment-body {
             position: relative;
             padding-left: 75px;
+            margin-top: 40px;
             margin-bottom: 40px;
             padding-bottom: 30px;
             border-bottom: 1px solid $bg_single;
@@ -591,6 +592,7 @@
     // ======================================================================== /
     .comment-respond {
         padding-top: 20px;
+        padding-bottom: 20px;
 
         .comment-reply-title {
             font-size: 20px;

@@ -75,7 +75,13 @@ function porto_categories() {
 
             $output .= '<ul class="cat-links">';
             foreach( $post_categories as $post_category ) {
-                $category_color = get_field( 'category_color', $post_category );
+                $category_color = '';
+                if( class_exists('acf') ) {
+                    $category_color = get_field( 'category_color', $post_category );
+                } else {
+                    $category_color = '#555555';
+                }
+
                 $output .= '<li>';
                     $output .= '<a style="background-color:' . $category_color . ';" href="' . esc_url( get_category_link( $post_category ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'mytheme' ), $post_category->name ) ) . '">' . esc_html( $post_category->name ) . '</a>' . $separator;
                 $output .= '</li>';
@@ -294,92 +300,12 @@ add_filter( 'comment_form_fields', __NAMESPACE__ . '\\wpb_move_comment_field_to_
 
 
 
-/**
- * WordPress' missing is_blog_page() function.  Determines if the currently viewed page is
- * one of the blog pages, including the blog home page, archive, category/tag, author, or single
- * post pages.
- *
- * @return bool
- */
-function is_blog_page() {
-
-    global $post;
-
-    //Post type must be 'post'.
-    $post_type = get_post_type($post);
-
-    //Check all blog-related conditional tags, as well as the current post type,
-    //to determine if we're viewing a blog page.
-    return (
-        ( is_home() || is_archive() || is_author() || is_category() || is_tag() )
-        && ($post_type == 'post')
-    ) ? true : false ;
-
-}
-
-
-function header_img_bg() {
-
-    if ( is_single() && has_post_thumbnail( ) ) {
-        echo 'style="background-image: url('. get_the_post_thumbnail_url() .');"';
-    } elseif ( is_single() ) {
-        echo '';
-    }else {
-        echo "style=\"background-image: url('". esc_url( get_header_image() ) ."');\"";
-    }
-
-}
 
 /**
  * ============================================================================
  * CUSTOM FUNCTION
  * ============================================================================
  */
-
-// function to display number of posts.
-function getPostViews($postID){
-    $count_key = 'post_views_count';
-    $count = get_post_meta($postID, $count_key, true);
-    if($count==''){
-        delete_post_meta($postID, $count_key);
-        add_post_meta($postID, $count_key, '0');
-        return "0 View";
-    }
-    return $count.' Views';
-}
-
-function setPostViews($postID) {
-    // http://wordpress.stackexchange.com/questions/65222/views-count-with-time-limit-per-ip
-
-    $user_ip = $_SERVER['REMOTE_ADDR']; //retrieve the current IP address of the visitor
-    $key = $user_ip . 'x' . $postID; //combine post ID & IP to form unique key
-    $value = array($user_ip, $postID); // store post ID & IP as separate values (see note)
-    $visited = get_transient($key); //get transient and store in variable
-
-    //check to see if the Post ID/IP ($key) address is currently stored as a transient
-    if ( false === ( $visited ) ) {
-
-        //store the unique key, Post ID & IP address for 12 hours if it does not exist
-        set_transient( $key, $value, 60*60*12 );
-
-        // now run post views function
-        $count_key = 'views';
-        $count = get_post_meta($postID, $count_key, true);
-        if($count==''){
-            $count = 0;
-            delete_post_meta($postID, $count_key);
-            add_post_meta($postID, $count_key, '0');
-        }else{
-            $count++;
-            update_post_meta($postID, $count_key, $count);
-        }
-
-
-    }
-
-}
-
-
 function legal_station_post_love_display( ) {
     $love_text = '';
     $love = get_post_meta( get_the_ID(), 'post_love', true );

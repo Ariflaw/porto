@@ -24,7 +24,7 @@
     $args = array(
         'opt_name'              => 'porto',
         'dev_mode'              => TRUE,
-        'use_cdn'               => TRUE,
+        'use_cdn'               => FALSE,
         'display_name'          => 'Porto Theme Options',
         'display_version'       => 'Version 0.1',
         'page_slug'             => 'porto',
@@ -198,31 +198,156 @@
 
     /**
      * ============================================================================
+     * HEADER
+     * ============================================================================
+     */
+    Redux::setSection( $opt_name, array(
+        'title'  => __( 'Header', 'redux-framework-demo' ),
+        'id'     => 'header',
+        'desc'   => __( 'Customize the header section', 'redux-framework-demo' ),
+        'icon'   => 'el el-website',
+        'fields' => array(
+        array(
+            'id'       => 'opt-text5',
+            'type'     => 'text',
+            'title'    => __( 'Example Text', 'redux-framework-demo' ),
+            'desc'     => __( 'Example description.', 'redux-framework-demo' ),
+            'subtitle' => __( 'Example subtitle.', 'redux-framework-demo' ),
+            )
+        )
+    ) );
+
+    Redux::setSection( $opt_name, array(
+        'title'  => __( 'Header', 'redux-framework-demo' ),
+        'id'     => 'header',
+        'desc'   => __( 'Customize the header section', 'redux-framework-demo' ),
+        'icon'   => 'el el-website',
+        )
+    );
+
+    Redux::setSection( $opt_name, array(
+        'title'  => __( 'Header Blog', 'redux-framework-demo' ),
+        'id'     => 'header-blog',
+        'desc'   => __( 'Customize the header blog section', 'redux-framework-demo' ),
+        'subsection' => true,
+        'fields'     => array(
+            array(
+                'id'       => 'hb-heading',
+                'type'     => 'text',
+                'title'    => __( 'Heading Text', 'redux-framework-demo' ),
+                // 'subtitle' => __( 'Subtitle', 'redux-framework-demo' ),
+                // 'desc'     => __( 'Field Description', 'redux-framework-demo' ),
+                'default'  => 'Blog',
+            ),
+            array(
+                'id'       => 'hb-sub-heading',
+                'type'     => 'textarea',
+                'title'    => __( 'Sub Heading Text', 'redux-framework-demo' ),
+                // 'subtitle' => __( 'Subtitle', 'redux-framework-demo' ),
+                // 'desc'     => __( 'Field Description', 'redux-framework-demo' ),
+                'validate' => 'html_custom',
+                'default'  => 'What I think here.',
+                'allowed_html' => array(
+                    'a' => array(
+                        'href' => array(),
+                        'title' => array()
+                    ),
+                    'br' => array(),
+                    'em' => array(),
+                    'strong' => array()
+                )
+            ),
+        )
+    ));
+
+    /**
+     * ============================================================================
      * FOOTER
      * ============================================================================
      */
     Redux::setSection( $opt_name, array(
         'title' => __( 'Footer', 'redux-framework-demo' ),
         'id'    => 'footer',
-        'desc'  => __( 'Basic fields as subsections.', 'redux-framework-demo' ),
-        'icon'  => 'el el-website',
+        'desc'  => __( 'Customize the footer section.', 'redux-framework-demo' ),
+        'icon'  => 'el el-photo',
         'fields'     => array(
             array(
-                'id'       => 'textarea-example3',
-                'type'     => 'textarea',
-                'title'    => __( 'Text Area Field', 'redux-framework-demo' ),
-                'subtitle' => __( 'Subtitle', 'redux-framework-demo' ),
-                'desc'     => __( 'Field Description', 'redux-framework-demo' ),
-                'default'  => 'Default Text',
+                'id'       => 'bg-footer',
+                'type'     => 'media',
+                'url'      => true,
+                'title'    => __( 'Background Footer Image', 'redux-framework-demo' ),
+                'compiler' => 'true',
+                //'mode'      => false, // Can be set to false to allow any media type, or can also be set to any mime type.
+                // 'desc'     => __( 'Basic media uploader with disabled URL input field.', 'redux-framework-demo' ),
+                'subtitle' => __( 'Upload any media using the WordPress native uploader', 'redux-framework-demo' ),
+                'default'  => array( 'url' => get_template_directory_uri().'/dist/images/bg_footer.jpg' ),
+                //'hint'      => array(
+                //    'title'     => 'Hint Title',
+                //    'content'   => 'This is a <b>hint</b> for the media field with a Title.',
+                //)
             ),
+            array(
+                'id'        => 'footer-bg-overlay',
+                'type'      => 'color_rgba',
+                'title'     => 'Overlay Background Footer',
+                'subtitle'  => 'Set color and alpha channel',
+                'desc'      => 'Changed the color Overlay whatever you like!',
+
+                // See Notes below about these lines.
+                'output' => array('
+                    background-color' => '.site-footer::before
+                '),
+                //'compiler'  => array('color' => '.site-header, .site-footer', 'background-color' => '.nav-bar'),
+                'default'   => array(
+                    'color'     => '#ffffff',
+                    'alpha'     => 0.75
+                ),
+
+                // These options display a fully functional color palette.  Omit this argument
+                // for the minimal color picker, and change as desired.
+                'options'       => array(
+                    'show_input'                => true,
+                    'show_initial'              => true,
+                    'show_alpha'                => true,
+                    'show_palette'              => false,
+                    'show_palette_only'         => false,
+                    'show_selection_palette'    => true,
+                    'max_palette_size'          => 10,
+                    'allow_empty'               => true,
+                    'clickout_fires_change'     => false,
+                    'choose_text'               => 'Choose',
+                    'cancel_text'               => 'Cancel',
+                    'show_buttons'              => true,
+                    'use_extended_classes'      => true,
+                    'palette'                   => null,  // show default
+                    'input_text'                => 'Select Color'
+                ),
+            ),
+
+            array(
+                'id'       => 'logo-footer',
+                'type'     => 'media',
+                'url'      => true,
+                'title'    => __( 'Logo Image Footer', 'redux-framework-demo' ),
+                'compiler' => 'true',
+                //'mode'      => false, // Can be set to false to allow any media type, or can also be set to any mime type.
+                // 'desc'     => __( 'Basic media uploader with disabled URL input field.', 'redux-framework-demo' ),
+                'subtitle' => __( 'Upload any media using the WordPress native uploader', 'redux-framework-demo' ),
+                'default'  => array( 'url' => get_template_directory_uri().'/dist/images/logo-black.png' ),
+                //'hint'      => array(
+                //    'title'     => 'Hint Title',
+                //    'content'   => 'This is a <b>hint</b> for the media field with a Title.',
+                //)
+            ),
+
         )
     ) );
 
     Redux::setSection( $opt_name, array(
         'title' => __( 'Footer', 'porto' ),
         'id'    => 'footer',
-        'desc'  => __( 'Basic fields as subsections.', 'porto' ),
-        'icon'  => 'el el-website',
+        'desc'  => __( 'Customize the footer section.', 'porto' ),
+        'icon'  => 'el el-photo',
     ) );
 
     Redux::setSection( $opt_name, array(
@@ -266,6 +391,7 @@
                 // 'subtitle' => __( '', 'porto' ),
                 // 'desc'     => __( 'Field Description', 'porto' ),
                 'validate' => 'url',
+                'default'  => 'https://www.linkedin.com/',
                 'placeholder'  => 'https://www.linkedin.com/',
             ),
             array(
@@ -275,6 +401,7 @@
                 // 'subtitle' => __( '', 'porto' ),
                 // 'desc'     => __( 'Field Description', 'porto' ),
                 'validate' => 'url',
+                'default'  => 'https://github.com/',
                 'placeholder'  => 'https://github.com/',
             ),
             array(

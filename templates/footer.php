@@ -1,16 +1,27 @@
-<footer class="site-footer">
+<?php
+    global $porto;
+
+    $bg = $porto['bg-footer']['url'];
+    $bg_img;
+
+    if ( isset( $bg ) ) {
+        $bg_img = 'style="background-image: url( '.$bg.' )"';
+    }
+
+ ?>
+<footer class="site-footer" <?php echo $bg_img; ?>>
 
         <!-- <?php dynamic_sidebar('sidebar-footer'); ?> -->
 
     <div class="footer_content">
         <div class="container">
+            <?php if( isset( $porto['logo-footer'] ) ): ?>
             <div class="footer_logo">
-                <img src="<?php echo get_template_directory_uri(); ?>/dist/images/logo-black.png" alt="Ariflaw Logo Black">
+                <img src="<?php echo $porto['logo-footer']['url']; ?>" alt="<?php echo bloginfo( 'name' ); ?>">
             </div>
+            <?php endif; ?>
             <ul class="footer_social">
                 <?php
-
-                    global $porto;
 
                     // Grab the first element using a foreach
                     // http://stackoverflow.com/questions/3957768/php-grab-the-first-element-using-a-foreach

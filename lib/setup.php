@@ -98,6 +98,9 @@ function display_sidebar() {
         is_404(),
         is_front_page(),
         is_page_template('template-custom.php'),
+        is_page_template('page-portfolio.php'),
+        is_page_template('page-freebies.php'),
+        is_page_template('page-contact.php'),
         is_single(),
         is_tag(),
         is_archive(),
@@ -120,9 +123,9 @@ function assets() {
 
     wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 
-    wp_enqueue_script( 'legal-station_love', get_template_directory_uri() . '/assets/scripts/love.js', array('jquery'), '1.0', true );
-    wp_localize_script( 'legal-station_love', 'postlove', array(
-    'ajax_url' => admin_url( 'admin-ajax.php' )
-    ));
+    // wp_enqueue_script( 'legal-station_love', get_template_directory_uri() . '/assets/scripts/love.js', array('jquery'), '1.0', true );
+    // wp_localize_script( 'legal-station_love', 'postlove', array(
+    // 'ajax_url' => admin_url( 'admin-ajax.php' )
+    // ));
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

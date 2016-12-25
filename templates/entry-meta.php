@@ -17,20 +17,16 @@
             <p class="byline author vcard">
                 <a href="<?= get_author_posts_url(get_the_author_meta('ID')); ?>" rel="author" class="fn"><?= get_the_author(); ?></a>
             </p>
-            
+
             <?php Roots\Sage\Extras\porto_categories(); ?>
 
+            <?php
+            if( class_exists( 'WP_MinsToRead' ) ) : ?>
             <div class="post_read">
                 <i class="icon icon-book-open"></i>
-                <?php
-                if( class_exists( 'WP_MinsToRead' ) ) {
-                    echo '<strong>' . WP_MinsToRead::get_mtr( get_the_ID() ) . '</strong>';
-                }
-                ?>
-                <!-- <span class="dot">
-                    <i class="icon icon-cup"></i><?php echo Roots\Sage\Extras\getPostViews(get_the_ID()); ?>
-                </span> -->
+                <?php echo '<strong>' . WP_MinsToRead::get_mtr( get_the_ID() ) . '</strong>'; ?>
             </div>
+            <?php endif; ?>
         </div>
     <?php endif; ?>
 </div>

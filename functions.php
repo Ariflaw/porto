@@ -10,6 +10,7 @@
 * @link https://github.com/roots/sage/pull/1042
 */
 $sage_includes = [
+    'lib/init.php',
     'lib/assets.php',    // Scripts and stylesheets
     'lib/extras.php',    // Custom functions
     'lib/setup.php',     // Theme setup
@@ -17,6 +18,7 @@ $sage_includes = [
     'lib/wrapper.php',   // Theme wrapper class
     'lib/customizer.php', // Theme customizer
     'lib/admin/admin-init.php', // Theme Options by Redux
+    'lib/navwalker.php',
 ];
 
 foreach ($sage_includes as $file) {

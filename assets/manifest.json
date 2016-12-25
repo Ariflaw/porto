@@ -1,12 +1,13 @@
 {
     "dependencies": {
         "main.js": {
-            "files": [
-                "scripts/main.js"
-            ],
             "vendor": [
-                "scripts/love.js",
                 "../../bower_components/headroom.js/dist/headroom.min.js"
+            ],
+            "files": [
+                "scripts/love.js",
+                "scripts/stellarnav.js",
+                "scripts/main.js"
             ],
             "main": true
         },
