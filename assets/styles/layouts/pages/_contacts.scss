@@ -1,0 +1,187 @@
+.page-template-page-contact {
+    background-color: $bg_single;
+
+    // HEADER STYLE
+    // ======================================================================== /
+    #hero {
+        height: 80vh;
+
+        .hero_content {
+            top: 32%;
+            max-width: 720px;
+
+            .page_title {
+                font-weight: 400;
+                text-transform: inherit;
+                line-height: 55px;
+                letter-spacing: 1px;
+
+                strong {
+                    text-transform: uppercase;
+                }
+            }
+
+            .divider {
+                display: block;
+                height: 2px;
+                width: 30%;
+                text-align: center;
+                margin: 30px auto;
+                background-color: $w;
+            }
+
+        }
+    }
+
+    // CONTENT STYLE
+    // ======================================================================== /
+    .content {
+        padding-bottom: 60px;
+    }
+
+    .main {
+        top: -80px;
+        background-color: $w;
+        padding: 0;
+        box-shadow: 0px 0px 33px rgba( 0, 0, 0, 0.1 );
+
+        & > .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    .contact_content,
+    .contact_info {
+        max-width: 100%;
+        padding: 30px;
+
+        @media screen and( min-width: $md ) {
+            padding: 40px 50px;
+        }
+    }
+
+    .contact_title {
+        font-size: 26px;
+        font-style: italic;
+        letter-spacing: 0.5px;
+        margin-bottom: 40px;
+    }
+
+    .contact_content {
+
+        .contact_title {
+            color: $color_title;
+        }
+
+        label {
+            font-family: $font_title;
+            font-size: 12px;
+            font-style: italic;
+            color: #B9B9B9;
+            margin-bottom: 0;
+        }
+
+        .wpcf7-form {
+            & > .row {
+                margin-bottom: 30px;
+            }
+            margin-bottom: -20px;
+        }
+
+        .wpcf7-form-control {
+            width: 100%;
+            letter-spacing: 0.2px;
+            color: $body_font;
+            padding: 0 10px 5px 0;
+            border: none;
+            border-bottom: 1px solid $e;
+            outline: 0;
+
+            &:focus, &:active {
+                border-color: $primary;
+            }
+        }
+
+        .wpcf7-textarea {
+            width: 100%;
+            resize: none;
+            height: 140px !important;
+        }
+
+        .wpcf7-recaptcha {
+            border: none;
+        }
+
+        .wpcf7-submit {
+            position: absolute;
+            right: 50px;
+            bottom: 75px;
+            width: 90px;
+            padding: 10px 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: $w;
+            background-color: $c333;
+            outline: 0;
+            border: none;
+            border-radius: 2px;
+        }
+
+        .wpcf7-response-output {
+            margin: 0;
+        }
+
+    }
+
+    .contact_info {
+        background-color: $primary;
+        color: $w;
+
+        .contact_info_details {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 25px;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 20px;
+                background-color: rgba( 255, 255, 255, 0.75 );
+                width: 100%;
+                height: 1px;
+                z-index: -1;
+            }
+
+            h6 {
+                display: inline-block;
+                font-size: 20px;
+                font-style: italic;
+                letter-spacing: 0;
+                padding: 10px 10px 2px 0;
+                margin-bottom: 0;
+                z-index: 2;
+                background-color: $primary;
+            }
+
+            span, a {
+                display: block;
+                letter-spacing: 0.5px;
+                color: $w;
+            }
+
+        }
+
+        .thanks {
+            display: block;
+            font-family: $font_title;
+            font-style: italic;
+            margin-top: 50px;
+            margin-bottom: 0;
+        }
+
+    }
+
+
+}

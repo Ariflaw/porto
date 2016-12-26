@@ -46,7 +46,7 @@ global $porto;
 
 <header id="hero" class="hero_header" <?php header_img_bg(); ?>>
     <div class="container">
-        <?php if ( is_blog_page() ): ?>
+        <?php if ( is_blog_page() ) : ?>
             <div class="hero_content">
                 <h1 class="page_title"><?php echo esc_html( $porto['hb-heading'] ); ?></h1>
                 <?php if( !empty( $porto['hb-sub-heading'] ) ) : ?>
@@ -55,7 +55,7 @@ global $porto;
             </div>
 
             <div class="hero_profile">
-                <img src="<?php echo get_template_directory_uri(); ?>/dist/images/profile.png" alt="Avatar">
+                <?php echo get_avatar( 'nurariflaw@gmail.com', 120 ); ?>
             </div>
         <?php elseif ( is_single() ): ?>
             <div class="hero_content_single">
@@ -75,15 +75,15 @@ global $porto;
                     </span>
                 </div>
             </div>
-        <?php elseif ( post_type_exists( 'portfolio' ) ) : ?>
+
+        <?php elseif( is_page_template( 'page-contact.php' ) ) : ?>
             <div class="hero_content">
-                <?php if( post_type_exists( 'portfolio' ) ) : ?>
-                <h1 class="page_title"><?php echo __( 'Work.' ); ?></h1>
-                <?php endif; ?>
-                <?php if( !empty( $porto['hb-sub-heading'] ) ) : ?>
-                <!-- <p class="page_des"><?php echo $porto['hb-sub-heading']; ?></p> -->
-                <?php endif; ?>
+                <h1 class="page_title"><?php echo $porto['hc-heading']; ?></h1>
+                <div class="divider"></div>
+                <p class="page_des"><?php echo $porto['hc-sub-heading']; ?></p>
             </div>
+        <?php else : ?>
+            <h1 class="page_title"><?php echo __('Title Page'); ?></h1>
         <?php endif; ?>
 
     </div>

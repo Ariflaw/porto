@@ -207,14 +207,43 @@
         'desc'   => __( 'Customize the header section', 'redux-framework-demo' ),
         'icon'   => 'el el-website',
         'fields' => array(
-        array(
-            'id'       => 'opt-text5',
-            'type'     => 'text',
-            'title'    => __( 'Example Text', 'redux-framework-demo' ),
-            'desc'     => __( 'Example description.', 'redux-framework-demo' ),
-            'subtitle' => __( 'Example subtitle.', 'redux-framework-demo' ),
-            )
-        )
+            array(
+                'id'        => 'header-bg-overlay',
+                'type'      => 'color_rgba',
+                'title'     => 'Overlay Background Header',
+                'subtitle'  => 'Set color and alpha channel',
+                'desc'      => 'Changed the color Overlay whatever you like!',
+
+                // See Notes below about these lines.
+                'output' => array('
+                    background-color' => '#hero::after'),
+                //'compiler'  => array('color' => '.site-header, .site-footer', 'background-color' => '.nav-bar'),
+                'default'   => array(
+                    'color'     => '#000000',
+                    'alpha'     => 0.75
+                ),
+
+                // These options display a fully functional color palette.  Omit this argument
+                // for the minimal color picker, and change as desired.
+                'options'       => array(
+                    'show_input'                => true,
+                    'show_initial'              => true,
+                    'show_alpha'                => true,
+                    'show_palette'              => false,
+                    'show_palette_only'         => false,
+                    'show_selection_palette'    => true,
+                    'max_palette_size'          => 10,
+                    'allow_empty'               => true,
+                    'clickout_fires_change'     => false,
+                    'choose_text'               => 'Choose',
+                    'cancel_text'               => 'Cancel',
+                    'show_buttons'              => true,
+                    'use_extended_classes'      => true,
+                    'palette'                   => null,  // show default
+                    'input_text'                => 'Select Color'
+                ),
+            ),
+        ),
     ) );
 
     Redux::setSection( $opt_name, array(
@@ -259,6 +288,133 @@
             ),
         )
     ));
+
+    Redux::setSection( $opt_name, array(
+        'title'  => __( 'Header Contact', 'redux-framework-demo' ),
+        'id'     => 'header-contact',
+        'desc'   => __( 'Customize the header blog section', 'redux-framework-demo' ),
+        'subsection' => true,
+        'fields'     => array(
+            array(
+                'id'       => 'hc-heading',
+                'type'     => 'textarea',
+                'title'    => __( 'Heading Text', 'redux-framework-demo' ),
+                // 'subtitle' => __( 'Subtitle', 'redux-framework-demo' ),
+                // 'desc'     => __( 'Field Description', 'redux-framework-demo' ),
+                'default'  => 'Let\'s work <strong>Together</strong> <br /> and create something <strong>Awesome</strong>.',
+                'validate' => 'html_custom',
+                'allowed_html' => array(
+                    'a' => array(
+                        'href' => array(),
+                        'title' => array()
+                    ),
+                    'br' => array(),
+                    'em' => array(),
+                    'strong' => array()
+                )
+            ),
+            array(
+                'id'       => 'hc-sub-heading',
+                'type'     => 'textarea',
+                'title'    => __( 'Sub Heading Text', 'redux-framework-demo' ),
+                // 'subtitle' => __( 'Subtitle', 'redux-framework-demo' ),
+                // 'desc'     => __( 'Field Description', 'redux-framework-demo' ),
+                'validate' => 'html_custom',
+                'default'  => 'Looking for a new web design (with development) and/or corporate identity? I\'d love to hear about your project.',
+                'allowed_html' => array(
+                    'a' => array(
+                        'href' => array(),
+                        'title' => array()
+                    ),
+                    'br' => array(),
+                    'em' => array(),
+                    'strong' => array()
+                )
+            ),
+        )
+    ));
+
+    /**
+     * ============================================================================
+     * PAGES
+     * ============================================================================
+     */
+    Redux::setSection( $opt_name, array(
+        'title'  => __( 'Pages', 'redux-framework-demo' ),
+        'id'     => 'pages',
+        'desc'   => __( 'Customize the pages', 'redux-framework-demo' ),
+        'icon'   => 'el el-website',
+        'fields' => array(
+        array(
+            'id'       => 'opt-text5',
+            'type'     => 'text',
+            'title'    => __( 'Example Text', 'redux-framework-demo' ),
+            'desc'     => __( 'Example description.', 'redux-framework-demo' ),
+            'subtitle' => __( 'Example subtitle.', 'redux-framework-demo' ),
+            )
+        )
+    ) );
+
+    Redux::setSection( $opt_name, array(
+        'title'  => __( 'Pages', 'redux-framework-demo' ),
+        'id'     => 'pages',
+        'desc'   => __( 'Customize the pages', 'redux-framework-demo' ),
+        'icon'   => 'el el-list-alt',
+    ) );
+
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Contact Page', 'porto' ),
+        'desc'       => __( 'Customize you Contact Page', 'porto' ),
+        'id'         => 'contact-page',
+        'subsection' => true,
+        'fields'     => array(
+            array(
+                'id'       => 'contact-info',
+                'type'     => 'section',
+                'title'    => __( 'Contact Informations', 'redux-framework-demo' ),
+                'subtitle' => __( 'Custome the contact informations', 'redux-framework-demo' ),
+                'indent'   => true, // Indent all options below until the next 'section' option is set.
+            ),
+            array(
+                'id'       => 'contact-email',
+                'type'     => 'text',
+                'title'    => __( 'Email', 'redux-framework-demo' ),
+                'subtitle' => __( 'Type your email address', 'redux-framework-demo' ),
+                'default'  => __( 'your_email@domain.com', 'porto' ),
+                'placeholder'    => __( 'your_email@domain.com', 'porto' ),
+            ),
+            array(
+                'id'       => 'contact-skype',
+                'type'     => 'text',
+                'title'    => __( 'Skype', 'redux-framework-demo' ),
+                'subtitle' => __( 'type your skype id', 'redux-framework-demo' ),
+                'default'  => __( 'skype_id', 'porto' ),
+                'placeholder'    => __( 'skype_id', 'porto' ),
+            ),
+            array(
+                'id'       => 'contact-call',
+                'type'     => 'text',
+                'title'    => __( 'Phone', 'redux-framework-demo' ),
+                'subtitle' => __( 'Type your phone number', 'redux-framework-demo' ),
+                'default'  => __( '(+62)12-345-678-910', 'porto' ),
+                'placeholder'    => __( '(+62)12-345-678-910', 'porto' ),
+            ),
+            array(
+                'id'       => 'contact-address',
+                'type'     => 'textarea',
+                'title'    => __( 'Home', 'redux-framework-demo' ),
+                'subtitle' => __( 'Type your address', 'redux-framework-demo' ),
+                'default'  => __( 'Location where you live.', 'porto' ),
+                'plaecholder'    => __( 'Location where you live.', 'porto' ),
+            ),
+            array(
+                'id'     => 'section-end',
+                'type'   => 'section',
+                'indent' => false, // Indent all options below until the next 'section' option is set.
+            ),
+        )
+    ) );
+
 
     /**
      * ============================================================================
