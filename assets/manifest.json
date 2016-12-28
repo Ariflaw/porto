@@ -5,17 +5,24 @@
                 "../../bower_components/headroom.js/dist/headroom.min.js"
             ],
             "files": [
-                "scripts/love.js",
-                "scripts/stellarnav.js",
                 "scripts/main.js"
             ],
-            "main": true
+            "main": true,
+            "exclude": {
+              "bower": ["outlayer", "doc-ready", "fizzy-ui-utils", "get-style-property", "get-size", "matches-selector", "eventEmitter", "eventie"]
+            }
+        },
+        "admin-scripts.js": {
+          "vendor": ["assets/scripts/admin-scripts.js"]
         },
         "main.css": {
             "files": "styles/main.scss",
             "vendor": [
             ],
             "main": true
+        },
+        "admin-style.css": {
+            "files": ["styles/admin-style.scss"]
         },
         "customizer.js": {
             "files": [

@@ -9,6 +9,15 @@
   "dependencies": {
     "bootstrap": "git://github.com/twbs/bootstrap.git#v4.0.0-alpha.4",
     "simple-line-icons": "^2.4.1",
-    "headroom.js": "https://unpkg.com/headroom.js/bower.zip"
+    "headroom.js": "https://unpkg.com/headroom.js/bower.zip",
+    "isotope": "^3.0.1"
+    },
+    "overrides": {
+    "isotope": {
+      "main": ["./dist/isotope.pkgd.min.js"],
+      "dependencies": {}
+    }
   }
+
+
 }

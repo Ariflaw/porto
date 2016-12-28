@@ -1,19 +1,16 @@
 <?php
+/**
+ * Template Name: Homepage
+ */
+?>
 
-    $grid = '';
-    if ( has_post_thumbnail() ) {
-        $grid = 'col-md-6';
-    } else {
-        $grid = 'col-md-12';
-        $thumb_class = 'no_thumbnail';
-    }
-
+<?php
 
     $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
     $args = array(
-        'post_type' => 'portfolio',
-        'posts_per_page' => 3,
+        'post_type' => 'freebies',
+        'posts_per_page' => 1,
         'paged' => $paged
     );
 
@@ -21,15 +18,19 @@
     if ( $loop->have_posts() ) :
         while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
-        <article <?php post_class( 'row' ); ?>>
+        <h2>Plugin Template homepage</h2>
+
+        <article <?php post_class( ); ?>>
             <?php if ( has_post_thumbnail() ): ?>
-                <div class="portfo_thumbnail col-md-6">
+                <div class="post_thumbnail col-md-6">
                     <?php porto_post_thumbnail(); ?>
                 </div>
             <?php endif; ?>
-            <div class="portfo_content <?php echo $grid; ?>">
+            <div class="post_content <?php echo $grid; ?>">
+                <?php Roots\Sage\Extras\porto_categories(); ?>
                 <header>
                     <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                    <?php get_template_part('templates/entry-meta'); ?>
                 </header>
                 <div class="entry-summary">
                     <?php the_excerpt(); ?>

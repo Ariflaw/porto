@@ -21,7 +21,7 @@
         <article <?php post_class( ); ?>>
             <?php if ( has_post_thumbnail() ): ?>
                 <div class="post_thumbnail col-md-6">
-                    <?php Roots\Sage\Extras\porto_post_thumbnail(); ?>
+                    <?php porto_post_thumbnail(); ?>
                 </div>
             <?php endif; ?>
             <div class="post_content <?php echo $grid; ?>">

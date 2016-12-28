@@ -1,9 +1,7 @@
 <?php
 /*
-Template Name: Contact Page
-Template Post Type: post, page, portfolio
+* Template Name: Contact Page
 */
-// Page code here...
 
 ?>
 <div class="row">

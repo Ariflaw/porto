@@ -25,6 +25,33 @@ if ( ! function_exists( 'is_blog_page' ) ) :
 
 endif;
 
+/**
+ * ============================================================================
+ * THUMBNAILS
+ * ============================================================================
+ */
+if ( ! function_exists( 'porto_post_thumbnail' ) ) :
+/**
+ * Display an optional post thumbnail.
+ *
+ * Wraps the post thumbnail in an anchor element on index
+ * views, or a div element when on single views.
+ *
+ * @since Porto 1.0
+ * @since Porto 1.4 Was made 'pluggable', or overridable.
+ */
+function porto_post_thumbnail() {
+	if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+		return;
+	}
+	?>
+	<a class="post_thumbnail_link" href="<?php the_permalink(); ?>" aria-hidden="true">
+	    <?php the_post_thumbnail( 'large', array( 'alt' => get_the_title() ) ); ?>
+	</a>
+	<?php
+}
+endif;
+
 
 /* HEADER IMAGE BACKHROUND
  * ========================================================================== */
@@ -39,6 +66,7 @@ if ( ! function_exists( 'header_img_bg' ) ) :
         }
     }
 endif;
+
 
 /* POST COUNT VIEW
  * ========================================================================== */
@@ -156,8 +184,8 @@ if( !function_exists( 'custom_pagination' ) ) :
             global $wp_query;
             $numpages = $wp_query->max_num_pages;
             if(!$numpages) {
-            $numpages = 1;
-        }
+                $numpages = 1;
+            }
         }
 
         /**
@@ -192,3 +220,60 @@ if( !function_exists( 'custom_pagination' ) ) :
     }
 
 endif;
+
+
+/**
+ * ============================================================================
+ * BACKGROUND COLOR FOR CATEGORY
+ * http://wordpress.stackexchange.com/questions/112866/adding-colorpicker-field-to-category
+ * ============================================================================
+ */
+/** Add Colorpicker Field to "Add New Category" Form **/
+function category_form_custom_field_add( $taxonomy ) { ?>
+    <div class="form-field">
+        <label for="category_custom_color"><?php _e('Color');  ?></label>
+        <input name="cat_meta[catBG]" class="colorpicker" type="text" value="#555555" />
+        <p class="description"><?php _e( 'Choose your favorite color' ); ?></p>
+    </div>
+    <?php
+}
+add_action('category_add_form_fields', 'category_form_custom_field_add', 10 );
+
+/** Add New Field To Category **/
+function extra_category_fields( $tag ) {
+    $t_id = $tag->term_id;
+    $cat_meta = get_option( "category_$t_id" );
+    ?>
+    <tr class="form-field">
+        <th scope="row" valign="top"><label for="meta-color"><?php _e('Background Color'); ?></label></th>
+        <td>
+            <div id="colorpicker">
+                <input type="text" name="cat_meta[catBG]" class="colorpicker" size="3" style="" value="<?php echo (isset($cat_meta['catBG'])) ? $cat_meta['catBG'] : '#555555'; ?>" />
+            </div>
+            <br />
+            <span class="description"><?php _e('Choose your favorite color'); ?></span>
+            <br />
+        </td>
+    </tr>
+    <?php
+}
+add_action('category_edit_form_fields','extra_category_fields');
+
+/** Save Category Meta **/
+function save_extra_category_fileds( $term_id ) {
+
+    if ( isset( $_POST['cat_meta'] ) ) {
+        $t_id = $term_id;
+        $cat_meta = get_option( "category_$t_id");
+        $cat_keys = array_keys($_POST['cat_meta']);
+        foreach ($cat_keys as $key){
+            if (isset($_POST['cat_meta'][$key])){
+                $cat_meta[$key] = $_POST['cat_meta'][$key];
+            }
+        }
+        //save the option array
+        update_option( "category_$t_id", $cat_meta );
+    }
+}
+add_action('edited_category', 'save_extra_category_fileds');
+add_action('created_category', 'save_extra_category_fileds', 11, 1);

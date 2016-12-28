@@ -18,6 +18,7 @@ $sage_includes = [
     'lib/wrapper.php',   // Theme wrapper class
     'lib/customizer.php', // Theme customizer
     'lib/admin/admin-init.php', // Theme Options by Redux
+    'lib/admin/meta-box.php', // Meta Box
     'lib/navwalker.php',
 ];
 

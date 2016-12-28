@@ -39,7 +39,7 @@
         'page_parent_post_type' => 'your_post_type',
         'page_priority'         => '100',
         'customizer'            => TRUE,
-        'default_mark'          => '*',
+        // 'default_mark'          => '*',
         'hints' => array(
             'icon' => 'el el-asterisk',
             'icon_position' => 'right',
@@ -156,13 +156,6 @@
     ) );
 
     Redux::setSection( $opt_name, array(
-        'title' => __( 'Basic Fields', 'redux-framework-demo' ),
-        'id'    => 'basic',
-        'desc'  => __( 'Basic fields as subsections.', 'redux-framework-demo' ),
-        'icon'  => 'el el-home'
-    ) );
-
-    Redux::setSection( $opt_name, array(
         'title'      => __( 'Text', 'redux-framework-demo' ),
         'desc'       => __( 'For full documentation on this field, visit: ', 'redux-framework-demo' ) . '<a href="http://docs.reduxframework.com/core/fields/text/" target="_blank">http://docs.reduxframework.com/core/fields/text/</a>',
         'id'         => 'opt-text-subsection',
@@ -208,6 +201,18 @@
         'icon'   => 'el el-website',
         'fields' => array(
             array(
+                'id'            => 'hero-height',
+                'type'          => 'slider',
+                'title'         => __( 'Set the Height for Hero Header', 'redux-framework-demo' ),
+                'subtitle'      => __( 'You can custome the height for Header Hero', 'redux-framework-demo' ),
+                'desc'          => __( 'Height use the screen. Min: 0, max: 100, step: 1, default value: 75 vh', 'redux-framework-demo' ),
+                'default'       => 75,
+                'min'           => 0,
+                'step'          => 1,
+                'max'           => 100,
+                'display_value' => 'text',
+            ),
+            array(
                 'id'        => 'header-bg-overlay',
                 'type'      => 'color_rgba',
                 'title'     => 'Overlay Background Header',
@@ -215,8 +220,7 @@
                 'desc'      => 'Changed the color Overlay whatever you like!',
 
                 // See Notes below about these lines.
-                'output' => array('
-                    background-color' => '#hero::after'),
+                'output' => array('background-color' => '#hero::after'),
                 //'compiler'  => array('color' => '.site-header, .site-footer', 'background-color' => '.nav-bar'),
                 'default'   => array(
                     'color'     => '#000000',
@@ -245,14 +249,6 @@
             ),
         ),
     ) );
-
-    Redux::setSection( $opt_name, array(
-        'title'  => __( 'Header', 'redux-framework-demo' ),
-        'id'     => 'header',
-        'desc'   => __( 'Customize the header section', 'redux-framework-demo' ),
-        'icon'   => 'el el-website',
-        )
-    );
 
     Redux::setSection( $opt_name, array(
         'title'  => __( 'Header Blog', 'redux-framework-demo' ),
@@ -301,7 +297,7 @@
                 'title'    => __( 'Heading Text', 'redux-framework-demo' ),
                 // 'subtitle' => __( 'Subtitle', 'redux-framework-demo' ),
                 // 'desc'     => __( 'Field Description', 'redux-framework-demo' ),
-                'default'  => 'Let\'s work <strong>Together</strong> <br /> and create something <strong>Awesome</strong>.',
+                'default'  => 'Let\'s work <strong>Together</strong> <br /> and creates something <strong>Awesome</strong>.',
                 'validate' => 'html_custom',
                 'allowed_html' => array(
                     'a' => array(
@@ -334,32 +330,143 @@
         )
     ));
 
+
+    /**
+     * ============================================================================
+     * TYPOGRAPHY
+     * ============================================================================
+     */
+    Redux::setSection( $opt_name, array(
+    'title'  => __( 'Typography', 'redux-framework-demo' ),
+    'id'     => 'typography',
+    'desc'   => __( 'For full documentation on this field, visit: ', 'redux-framework-demo' ) . '<a href="//docs.reduxframework.com/core/fields/typography/" target="_blank">docs.reduxframework.com/core/fields/typography/</a>',
+    'icon'   => 'el el-font',
+    'fields' => array(
+        array(
+        'id'       => 'opt-typography-body',
+        'type'     => 'typography',
+        'title'    => __( 'Body Font', 'redux-framework-demo' ),
+        'subtitle' => __( 'Specify the body font properties.', 'redux-framework-demo' ),
+        'google'   => true,
+        'default'  => array(
+            'color'       => '#dd9933',
+            'font-size'   => '30px',
+            'font-family' => 'Arial,Helvetica,sans-serif',
+            'font-weight' => 'Normal',
+            ),
+        ),
+        array(
+            'id'          => 'opt-typography',
+            'type'        => 'typography',
+            'title'       => __( 'Typography', 'redux-framework-demo' ),
+            //'compiler'      => true,  // Use if you want to hook in your own CSS compiler
+            //'google'      => false,
+            // Disable google fonts. Won't work if you haven't defined your google api key
+            'font-backup' => true,
+            // Select a backup non-google font in addition to a google font
+            //'font-style'    => false, // Includes font-style and weight. Can use font-style or font-weight to declare
+            //'subsets'       => false, // Only appears if google is true and subsets not set to false
+            //'font-size'     => false,
+            //'line-height'   => false,
+            //'word-spacing'  => true,  // Defaults to false
+            //'letter-spacing'=> true,  // Defaults to false
+            //'color'         => false,
+            //'preview'       => false, // Disable the previewer
+            'all_styles'  => true,
+            // Enable all Google Font style/weight variations to be added to the page
+            // 'output'      => array( 'h2.site-description, .entry-title' ),
+            // An array of CSS selectors to apply this font style to dynamically
+            // 'compiler'    => array( 'h2.site-description-compiler' ),
+            // An array of CSS selectors to apply this font style to dynamically
+            'units'       => 'px',
+            // Defaults to px
+            'subtitle'    => __( 'Typography option with each property can be called individually.', 'redux-framework-demo' ),
+            'default'     => array(
+                'color'       => '#333',
+                'font-style'  => '700',
+                'font-family' => 'Abel',
+                'google'      => true,
+                'font-size'   => '33px',
+                'line-height' => '40px'
+                ),
+            ),
+        )
+    ) );
+
+
+    /**
+     * ============================================================================
+     * BLOG
+     * ============================================================================
+     */
+    Redux::setSection( $opt_name, array(
+        'title'  => __( 'Blog', 'porto' ),
+        'id'     => 'blog',
+        'desc'   => __( 'Customize the blog page', 'porto' ),
+        'icon'   => 'el el-pencil',
+        'fields' => array(
+            array(
+                'id'       => 'blog-img-user',
+                'type'     => 'section',
+                'title'    => __( 'Image Profile', 'redux-framework-demo' ),
+                'subtitle' => __( 'Set your image profile', 'redux-framework-demo' ),
+                'indent'   => true, // Indent all options below until the next 'section' option is set.
+            ),
+            array(
+                'id'       => 'select-img-metod',
+                'type'     => 'switch',
+                'title'    => __( 'Select the Image Profile Source', 'redux-framework-demo' ),
+                // 'subtitle' => __( 'Look, it\'s on! Also hidden child elements!', 'redux-framework-demo' ),
+                'default'  => 1,
+                'on'       => 'Use Gravatar',
+                'off'      => 'Upload Image',
+            ),
+            array(
+                'required' => array( 'select-img-metod', '=', '1' ),
+                'id'       => 'email-profile',
+                'type'     => 'text',
+                'title'    => __( 'Email Gravatar', 'redux-framework-demo' ),
+                // 'subtitle' => __( 'Subtitle', 'redux-framework-demo' ),
+                // 'desc'     => __( 'Field Description', 'redux-framework-demo' ),
+                'placeholder'  => 'youremail@domain.com',
+            ),
+            array(
+                'required' => array( 'select-img-metod', '=', '0' ),
+                'id'       => 'img-profile',
+                'type'     => 'media',
+                'url'      => true,
+                'title'    => __( 'Upload Image Profile', 'redux-framework-demo' ),
+                'compiler' => 'true',
+                //'mode'      => false, // Can be set to false to allow any media type, or can also be set to any mime type.
+                // 'desc'     => __( 'Basic media uploader with disabled URL input field.', 'redux-framework-demo' ),
+                // 'subtitle' => __( 'Upload any media using the WordPress native uploader', 'redux-framework-demo' ),
+                // 'default'  => array( 'url' => 'http://s.wordpress.org/style/images/codeispoetry.png' ),
+                //'hint'      => array(
+                //    'title'     => 'Hint Title',
+                //    'content'   => 'This is a <b>hint</b> for the media field with a Title.',
+                //)
+            ),
+            array(
+                'id'     => 'sblog-img-user-end',
+                'type'   => 'section',
+                'indent' => false, // Indent all options below until the next 'section' option is set.
+            ),
+        ),
+    ) );
+
+
     /**
      * ============================================================================
      * PAGES
      * ============================================================================
      */
     Redux::setSection( $opt_name, array(
-        'title'  => __( 'Pages', 'redux-framework-demo' ),
+        'title'  => __( 'Pages', 'porto' ),
         'id'     => 'pages',
-        'desc'   => __( 'Customize the pages', 'redux-framework-demo' ),
+        'desc'   => __( 'Customize the pages', 'porto' ),
         'icon'   => 'el el-website',
         'fields' => array(
-        array(
-            'id'       => 'opt-text5',
-            'type'     => 'text',
-            'title'    => __( 'Example Text', 'redux-framework-demo' ),
-            'desc'     => __( 'Example description.', 'redux-framework-demo' ),
-            'subtitle' => __( 'Example subtitle.', 'redux-framework-demo' ),
-            )
-        )
-    ) );
-
-    Redux::setSection( $opt_name, array(
-        'title'  => __( 'Pages', 'redux-framework-demo' ),
-        'id'     => 'pages',
-        'desc'   => __( 'Customize the pages', 'redux-framework-demo' ),
-        'icon'   => 'el el-list-alt',
+        ),
     ) );
 
     Redux::setSection( $opt_name, array(
@@ -368,6 +475,41 @@
         'id'         => 'contact-page',
         'subsection' => true,
         'fields'     => array(
+            array(
+                'id'       => 'contact-content',
+                'type'     => 'section',
+                'title'    => __( 'Contact Informations', 'redux-framework-demo' ),
+                'subtitle' => __( 'Custome the contact informations', 'redux-framework-demo' ),
+                'indent'   => true, // Indent all options below until the next 'section' option is set.
+            ),
+            array(
+                'id'       => 'contct-content-title',
+                'type'     => 'switch',
+                'title'    => __( 'Enable to show Title Content', 'redux-framework-demo' ),
+                // 'subtitle' => __( 'Look, it\'s on! Also hidden child elements!', 'redux-framework-demo' ),
+                'default'  => 1,
+                'on'       => 'Enabled',
+                'off'      => 'Disabled',
+            ),
+            array(
+                'id'       => 'contact-title-field',
+                'type'     => 'text',
+                'required' => array( 'contct-content-title', '=', '1' ),
+                'title'    => __( 'Title Contact Title', 'redux-framework-demo' ),
+                // 'desc'     => __( 'Items set with a fold to this ID will hide unless this is set to the appropriate value.', 'redux-framework-demo' ),
+                'default'  => __( 'Send me a Message...', 'porto' ),
+            ),
+            array(
+                'id'     => 'section-end',
+                'type'   => 'section',
+                'indent' => false, // Indent all options below until the next 'section' option is set.
+            ),
+
+            array(
+                'id'   => 'page-divide-contact',
+                'type' => 'divide'
+            ),
+
             array(
                 'id'       => 'contact-info',
                 'type'     => 'section',
@@ -422,8 +564,8 @@
      * ============================================================================
      */
     Redux::setSection( $opt_name, array(
-        'title' => __( 'Footer', 'redux-framework-demo' ),
         'id'    => 'footer',
+        'title' => __( 'Footer', 'redux-framework-demo' ),
         'desc'  => __( 'Customize the footer section.', 'redux-framework-demo' ),
         'icon'  => 'el el-photo',
         'fields'     => array(
@@ -448,7 +590,6 @@
                 'title'     => 'Overlay Background Footer',
                 'subtitle'  => 'Set color and alpha channel',
                 'desc'      => 'Changed the color Overlay whatever you like!',
-
                 // See Notes below about these lines.
                 'output' => array('
                     background-color' => '.site-footer::before
@@ -458,7 +599,6 @@
                     'color'     => '#ffffff',
                     'alpha'     => 0.75
                 ),
-
                 // These options display a fully functional color palette.  Omit this argument
                 // for the minimal color picker, and change as desired.
                 'options'       => array(
@@ -479,7 +619,6 @@
                     'input_text'                => 'Select Color'
                 ),
             ),
-
             array(
                 'id'       => 'logo-footer',
                 'type'     => 'media',
@@ -495,21 +634,13 @@
                 //    'content'   => 'This is a <b>hint</b> for the media field with a Title.',
                 //)
             ),
-
-        )
+        ),
     ) );
 
     Redux::setSection( $opt_name, array(
-        'title' => __( 'Footer', 'porto' ),
-        'id'    => 'footer',
-        'desc'  => __( 'Customize the footer section.', 'porto' ),
-        'icon'  => 'el el-photo',
-    ) );
-
-    Redux::setSection( $opt_name, array(
+        'id'         => 'social-accounts',
         'title'      => __( 'Social Accounts', 'porto' ),
         'desc'       => __( 'Paste your social acoounts on the fields.', 'porto' ),
-        'id'         => 'social-accounts',
         'subsection' => true,
         'fields'     => array(
             array(
@@ -608,10 +739,9 @@
         )
     ) );
 
-
     Redux::setSection( $opt_name, array(
-        'title' => __( 'Copyright', 'redux-framework-demo' ),
         'id'    => 'copyright',
+        'title' => __( 'Copyright', 'redux-framework-demo' ),
         'desc'  => __( 'Basic fields as subsections.', 'redux-framework-demo' ),
         'subsection' => true,
         'fields'     => array(

@@ -26,6 +26,34 @@ add_filter('body_class', __NAMESPACE__ . '\\body_class');
 
 
 /**
+ * ============================================================================
+ * CUSTOME BASE TEMPLATE FOR CUSTOM POST TYPE
+ * ============================================================================
+ */
+ add_filter('sage/wrap_base', __NAMESPACE__ . '\\sage_wrap_base_cpts'); // Add our function to the sage/wrap_base filter
+
+ function sage_wrap_base_cpts($templates) {
+   $cpt = get_post_type(); // Get the current post type
+   if ($cpt) {
+      array_unshift($templates, 'base-' . $cpt . '.php'); // Shift the template to the front of the array
+   }
+   return $templates; // Return our modified array with base-$cpt.php at the front of the queue
+ }
+
+
+ function portfolio_wrapper($templates) {
+     $template_slug = get_page_template_slug(); // Get the current page template slug
+     switch ($template_slug) :
+         case 'template-portfolio.php' :
+             array_unshift($templates, 'base-portfolio.php'); // Shift the template to the front of the array
+     endswitch;
+
+     return $templates; // Return our modified array with the desired base-*.php at the front of the queue
+ }
+ add_filter('roots/wrap_base', __NAMESPACE__ . '\\portfolio_wrapper');
+
+
+/**
  * Clean up the_excerpt()
  * https://developer.wordpress.org/reference/functions/the_excerpt/
  */
@@ -75,12 +103,9 @@ function porto_categories() {
 
             $output .= '<ul class="cat-links">';
             foreach( $post_categories as $post_category ) {
-                $category_color = '';
-                if( class_exists('acf') ) {
-                    $category_color = get_field( 'category_color', $post_category );
-                } else {
-                    $category_color = '#555555';
-                }
+                $cat_id = $post_category->term_id;
+                $cat_data = get_option("category_$cat_id");
+                $category_color = $cat_data['catBG'];
 
                 $output .= '<li>';
                     $output .= '<a style="background-color:' . $category_color . ';" href="' . esc_url( get_category_link( $post_category ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'mytheme' ), $post_category->name ) ) . '">' . esc_html( $post_category->name ) . '</a>' . $separator;
@@ -156,36 +181,13 @@ if ( ! function_exists( 'porto_tags' ) ) :
  * @since Twenty Sixteen 1.0
  */
 function porto_tags() {
-	$tags_list = get_the_tag_list( '', _x( '', 'Used between list items, there is a space after the comma.', 'twentysixteen' ) );
+	$tags_list = get_the_tag_list( '', _x( '', 'Used between list items, there is a space after the comma.', 'porto' ) );
 	if ( $tags_list ) {
 		printf( '<span class="tags-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
-			_x( 'Tags', 'Used before tag names.', 'twentysixteen' ),
+			_x( 'Tags', 'Used before tag names.', 'porto' ),
 			$tags_list
 		);
 	}
-}
-endif;
-
-
-if ( ! function_exists( 'porto_post_thumbnail' ) ) :
-/**
- * Display an optional post thumbnail.
- *
- * Wraps the post thumbnail in an anchor element on index
- * views, or a div element when on single views.
- *
- * @since Twenty Fourteen 1.0
- * @since Twenty Fourteen 1.4 Was made 'pluggable', or overridable.
- */
-function porto_post_thumbnail() {
-	if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
-		return;
-	}
-	?>
-	<a class="post_thumbnail_link" href="<?php the_permalink(); ?>" aria-hidden="true">
-	    <?php the_post_thumbnail( 'large', array( 'alt' => get_the_title() ) ); ?>
-	</a>
-	<?php
 }
 endif;
 
@@ -297,8 +299,6 @@ function wpb_move_comment_field_to_bottom( $fields ) {
 }
 
 add_filter( 'comment_form_fields', __NAMESPACE__ . '\\wpb_move_comment_field_to_bottom' );
-
-
 
 
 /**

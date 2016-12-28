@@ -55,7 +55,11 @@ global $porto;
             </div>
 
             <div class="hero_profile">
-                <?php echo get_avatar( 'nurariflaw@gmail.com', 120 ); ?>
+                <?php if( $porto['select-img-metod'] == 1 ) :
+                    echo get_avatar( $porto['email-profile'], 120 );
+                else :
+                    echo '<img src="'.$porto['img-profile']['url'].'" alt="Author Image">';
+                endif; ?>
             </div>
         <?php elseif ( is_single() ): ?>
             <div class="hero_content_single">
@@ -83,7 +87,9 @@ global $porto;
                 <p class="page_des"><?php echo $porto['hc-sub-heading']; ?></p>
             </div>
         <?php else : ?>
-            <h1 class="page_title"><?php echo __('Title Page'); ?></h1>
+            <div class="hero_content">
+                <h1 class="page_title"><?php echo __('Title is Good'); ?></h1>
+            </div>
         <?php endif; ?>
 
     </div>
