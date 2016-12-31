@@ -1,7 +1,79 @@
 // ======================================================================== /
 // ARCHIVE PORTFOLIO STYLE
 // ======================================================================== /
+.wrap-folio {
+    // padding-bottom: 30px;
+    //
+    // @media screen and ( min-width: $md ) {
+    //     padding-bottom: 60px;
+    // }
+
+
+    .porto_pagination {
+        display: block;
+        text-align: center;
+        margin-left: -15px;
+        margin-right: -15px;
+        padding: 80px 0;
+        background-color: $cfc;
+
+        .page-numbers {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                display: inline-block;
+                padding: 0;
+                margin: 0;
+            }
+
+            a, span {
+                padding: 10px 18px;
+                font-size: 13px;
+                color: $c777;
+                border: 1px solid $bg_single;
+                transition: 0.2s ease-in-out;
+                border-radius: 2px;
+            }
+
+            a {
+
+                &:hover, &:active, &:focus {
+                    text-decoration: none;
+                    border-color: $primary;
+                    color: $w;
+                    background-color: $primary;
+                }
+
+                &.next, &.prev {
+                    letter-spacing: 3px;
+                    text-transform: uppercase;
+                }
+
+                i {
+                    font-size: 12px;
+                }
+            }
+
+            &.current {
+                opacity: 0.35;
+                border-color: $primary;
+                color: $w;
+                background-color: $primary;
+            }
+        }
+    }
+
+}
+
+
 .type-portfolio {
+
+    .portfo_thumbnail,
+    .portfo_content {
+        padding: 0;
+    }
 
     @media screen and ( min-width: $md ) {
         .portfo_thumbnail,
@@ -15,9 +87,10 @@
                 order: 1;
 
                 &::before {
+                    display: none;
                     content: "";
                     position: absolute;
-                    left: -30px;
+                    // left: -30px;
                     // left: 0;
                     top: 0;
                     bottom: 0;
@@ -27,8 +100,8 @@
                     height: 0;
                     border-top: 30px solid transparent;
                     border-bottom: 30px solid transparent;
-                    border-right: 30px solid $c333;
-                    // border-left: 30px solid $w;
+                    // border-right: 30px solid $c333;
+                    border-left: 30px solid $w;
                 }
             }
 
@@ -40,11 +113,17 @@
         }
 
         .portfo_content {
-            padding: 0 85px;
+            padding: 60px 0;
             height: 100%;
             text-align: center;
             margin: auto;
             vertical-align: middle;
+        }
+
+        &.has-post-thumbnail {
+            .portfo_content {
+                padding: 0 85px;
+            }
         }
 
     }
@@ -61,21 +140,26 @@
     .portfo_content {
         position: relative;
 
+        @media screen and ( max-width: $md ) {
+            padding: 20px 30px 30px;
+        }
+
         &::before {
+            display: none;
             content: "";
             position: absolute;
-            left: 0;
-            // left: -30px;
+            // left: 0;
+            left: -20px;
             top: 0;
             bottom: 0;
             text-align: center;
             margin: auto;
             width: 0;
             height: 0;
-            border-top: 30px solid transparent;
-            border-bottom: 30px solid transparent;
-            border-left: 30px solid #2c2b2b;
-            // border-right: 30px solid $w;
+            border-top: 35px solid transparent;
+            border-bottom: 35px solid transparent;
+            // border-left: 30px solid #2c2b2b;
+            border-right: 20px solid $w;
         }
 
         .entry-title {
@@ -105,11 +189,30 @@
                 display: block;
                 margin-top: 30px;
                 text-transform: uppercase;
-                font-size: 11px;
-                letter-spacing: 2px;
+                font-size: 12px;
+                letter-spacing: 3px;
+                color: $c777;
+                opacity: 0.6;
 
                 &:hover, &:active, &:focus {
                     text-decoration: none;
+                    color: $primary;
+                    opacity: 1;
+                }
+
+                &:after {
+                    content: "\e606";
+                    font-family: "simple-line-icons";
+                    font-size: 10px;
+                    speak: none;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-variant: normal;
+                    text-transform: none;
+                    line-height: 1;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    padding-left: 10px;
                 }
             }
         }

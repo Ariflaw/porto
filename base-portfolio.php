@@ -15,9 +15,9 @@ use Roots\Sage\Wrapper;
     <![endif]-->
     <?php
         do_action('get_header');
-        get_template_part('templates/header');
+        get_template_part('templates/header-folio');
     ?>
-    <div class="wrap container-fluid" role="document">
+    <div class="wrap-folio container-fluid" role="document">
         <?php include Wrapper\template_path(); ?>
     </div><!-- /.wrap -->
     <?php

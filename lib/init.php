@@ -10,7 +10,6 @@ if ( ! function_exists( 'is_blog_page' ) ) :
     function is_blog_page() {
 
         global $post;
-
         //Post type must be 'post'.
         $post_type = get_post_type($post);
 
@@ -20,9 +19,7 @@ if ( ! function_exists( 'is_blog_page' ) ) :
             ( is_home() || is_archive() || is_author() || is_category() || is_tag() )
             && ($post_type == 'post')
         ) ? true : false ;
-
     }
-
 endif;
 
 /**
@@ -49,6 +46,84 @@ function porto_post_thumbnail() {
 	    <?php the_post_thumbnail( 'large', array( 'alt' => get_the_title() ) ); ?>
 	</a>
 	<?php
+}
+endif;
+
+
+/**
+ * ============================================================================
+ * CATEGORY POSTS
+ * ============================================================================
+ */
+
+if ( ! function_exists( 'porto_categories' ) ) :
+/**
+ * Prints HTML with category and tags for current post.
+ *
+ * Create your own porto_entry_taxonomies() function to override in a child theme.
+ *
+ * @since Twenty Sixteen 1.0
+ */
+function porto_categories() {
+
+    if ( is_single() ) {
+    	$categories_list = get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'porto' ) );
+    	if ( $categories_list && porto_categorized_blog() ) {
+    		printf( '<div class="cat-links dot"><span>%1$s </span>%2$s</div>',
+    			__( 'Post in', 'Used before category names.', 'porto' ),
+    		   $categories_list
+    		);
+            // echo $categories_list;
+    	}
+    } else {
+        // Category Background with ACF
+        // http://wordpress.stackexchange.com/questions/219820/single-php-category-entries-not-showing-right-colours
+        $post_categories = get_the_category();
+        if ( $post_categories ) {
+            $separator = ' ';
+            $output    = '';
+
+            $output .= '<ul class="cat-links">';
+            foreach( $post_categories as $post_category ) {
+                $cat_id = $post_category->term_id;
+                $cat_data = get_option("category_$cat_id");
+                $category_color = $cat_data['catBG'];
+
+                $output .= '<li>';
+                    $output .= '<a style="background-color:' . $category_color . ';" href="' . esc_url( get_category_link( $post_category ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'mytheme' ), $post_category->name ) ) . '">' . esc_html( $post_category->name ) . '</a>' . $separator;
+                $output .= '</li>';
+            }
+            $output .= '</ul>';
+
+            echo trim( $output, $separator );
+        }
+    }
+
+}
+endif;
+
+
+/**
+ * ============================================================================
+ * TAGS POSTS
+ * ============================================================================
+ */
+if ( ! function_exists( 'porto_tags' ) ) :
+/**
+ * Prints HTML with tags for current post.
+ *
+ * Create your own porto_tags() function to override in a child theme.
+ *
+ * @since Twenty Sixteen 1.0
+ */
+function porto_tags() {
+	$tags_list = get_the_tag_list( '', _x( '', 'Used between list items, there is a space after the comma.', 'porto' ) );
+	if ( $tags_list ) {
+		printf( '<span class="tags-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
+			_x( 'Tags', 'Used before tag names.', 'porto' ),
+			$tags_list
+		);
+	}
 }
 endif;
 
@@ -157,11 +232,11 @@ endif;
 
 /* PAGINATION CUSTOM PAGE
  * ========================================================================== */
-if( !function_exists( 'custom_pagination' ) ) :
+if( !function_exists( 'porto_pagination' ) ) :
     // Custom WordPress Loop With Pagination
     // http://callmenick.com/post/custom-wordpress-loop-with-pagination
 
-    function custom_pagination( $numpages = '', $pagerange = '', $paged='' ) {
+    function porto_pagination( $numpages = '', $pagerange = '', $paged='' ) {
 
         if (empty($pagerange)) {
             $pagerange = 2;
@@ -201,9 +276,9 @@ if( !function_exists( 'custom_pagination' ) ) :
             'end_size'        => 1,
             'mid_size'        => $pagerange,
             'prev_next'       => True,
-            'prev_text'       => __('&laquo;'),
-            'next_text'       => __('&raquo;'),
-            'type'            => 'plain',
+            'prev_text'       => __('<i class="icon-arrow-left"></i> Prev'),
+            'next_text'       => __('Next <i class="icon-arrow-right"></i>'),
+            'type'            => 'list',
             'add_args'        => false,
             'add_fragment'    => ''
         );
@@ -211,8 +286,8 @@ if( !function_exists( 'custom_pagination' ) ) :
         $paginate_links = paginate_links($pagination_args);
 
         if ($paginate_links) {
-            echo "<nav class='custom-pagination'>";
-            echo "<span class='page-numbers page-num'>Page " . $paged . " of " . $numpages . "</span> ";
+            echo "<nav class='porto_pagination'>";
+            // echo "<span class='page-numbers page-num'>Page " . $paged . " of " . $numpages . "</span> ";
             echo $paginate_links;
             echo "</nav>";
         }

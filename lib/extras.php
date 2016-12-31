@@ -74,52 +74,6 @@ function excerpt_length( $length ) {
 add_filter( 'excerpt_length', __NAMESPACE__ . '\\excerpt_length', 999 );
 
 
-if ( ! function_exists( 'porto_categories' ) ) :
-/**
- * Prints HTML with category and tags for current post.
- *
- * Create your own porto_entry_taxonomies() function to override in a child theme.
- *
- * @since Twenty Sixteen 1.0
- */
-function porto_categories() {
-
-    if ( is_single() ) {
-    	$categories_list = get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'porto' ) );
-    	if ( $categories_list && porto_categorized_blog() ) {
-    		printf( '<div class="cat-links dot"><span>%1$s </span>%2$s</div>',
-    			__( 'Post in', 'Used before category names.', 'porto' ),
-    		   $categories_list
-    		);
-            // echo $categories_list;
-    	}
-    } else {
-        // Category Background with ACF
-        // http://wordpress.stackexchange.com/questions/219820/single-php-category-entries-not-showing-right-colours
-        $post_categories = get_the_category();
-        if ( $post_categories ) {
-            $separator = ' ';
-            $output    = '';
-
-            $output .= '<ul class="cat-links">';
-            foreach( $post_categories as $post_category ) {
-                $cat_id = $post_category->term_id;
-                $cat_data = get_option("category_$cat_id");
-                $category_color = $cat_data['catBG'];
-
-                $output .= '<li>';
-                    $output .= '<a style="background-color:' . $category_color . ';" href="' . esc_url( get_category_link( $post_category ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'mytheme' ), $post_category->name ) ) . '">' . esc_html( $post_category->name ) . '</a>' . $separator;
-                $output .= '</li>';
-            }
-            $output .= '</ul>';
-
-            echo trim( $output, $separator );
-        }
-    }
-
-}
-endif;
-
 
 if ( ! function_exists( 'porto_categorized_blog' ) ) :
 /**
@@ -170,26 +124,6 @@ function porto_category_transient_flusher() {
 }
 add_action( 'edit_category', __NAMESPACE__ . '\\porto_category_transient_flusher' );
 add_action( 'save_post',     __NAMESPACE__ . '\\porto_category_transient_flusher' );
-
-
-if ( ! function_exists( 'porto_tags' ) ) :
-/**
- * Prints HTML with tags for current post.
- *
- * Create your own porto_tags() function to override in a child theme.
- *
- * @since Twenty Sixteen 1.0
- */
-function porto_tags() {
-	$tags_list = get_the_tag_list( '', _x( '', 'Used between list items, there is a space after the comma.', 'porto' ) );
-	if ( $tags_list ) {
-		printf( '<span class="tags-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
-			_x( 'Tags', 'Used before tag names.', 'porto' ),
-			$tags_list
-		);
-	}
-}
-endif;
 
 
 if ( ! function_exists( 'pagination_nav' ) ) :

@@ -27,7 +27,7 @@
                 </div>
             <?php endif; ?>
             <div class="post_content <?php echo $grid; ?>">
-                <?php Roots\Sage\Extras\porto_categories(); ?>
+                <?php porto_categories(); ?>
                 <header>
                     <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                     <?php get_template_part('templates/entry-meta'); ?>
@@ -42,8 +42,8 @@
 
         <!-- pagination here -->
         <?php
-            if ( function_exists('custom_pagination') ) {
-                custom_pagination( $loop->max_num_pages, "", $paged);
+            if ( function_exists('porto_pagination') ) {
+                porto_pagination( $loop->max_num_pages, "", $paged);
             }
         ?>
 

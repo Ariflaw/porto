@@ -34,8 +34,8 @@
 
         <!-- pagination here -->
         <?php
-            if ( function_exists('custom_pagination') ) {
-                custom_pagination( $loop->max_num_pages, "", $paged);
+            if ( function_exists('porto_pagination') ) {
+                porto_pagination( $loop->max_num_pages, "", $paged);
             }
         ?>
 
@@ -96,8 +96,8 @@
         <?php endwhile;  ?>
     </div> <!-- end isotope-list -->
     <?php
-        if ( function_exists('custom_pagination') ) {
-            custom_pagination( $loop->max_num_pages, "", $paged);
+        if ( function_exists('porto_pagination') ) {
+            porto_pagination( $loop->max_num_pages, "", $paged);
         }
     ?>
     <?php wp_reset_postdata(); ?>
