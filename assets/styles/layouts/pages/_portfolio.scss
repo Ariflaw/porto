@@ -1,14 +1,80 @@
 // ======================================================================== /
+// HEADER FOLIO
+// ======================================================================== /
+.hero_header_folio{
+    padding: 200px 0 100px;
+    background-color: $b;
+    overflow: hidden;
+
+    .header_folio_single {
+        margin: auto;
+        text-align: center;
+        max-width: 900px;
+        color: $w;
+
+        .icon_post {
+            margin-bottom: 20px;
+            i {
+                font-size: 20px;
+            }
+        }
+
+        .entry-title {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .entry-description {
+            font-family: $font_body;
+            font-weight: 300;
+            font-size: 20px;
+            letter-spacing: 0.5;
+        }
+
+        .folio_info {
+            list-style-type: none;
+            margin: 50px 0 0;
+            padding: 0;
+
+            li {
+                display: inline-block;
+                padding-right: 40px;
+                text-align: left;
+                font-family: $font_title;
+
+                &:last-child {
+                    padding-right: 0;
+                }
+
+                span {
+                    display: block;
+                    font-family: $font_body;
+                    font-size: 12px;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    letter-spacing: 0;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+// ======================================================================== /
 // ARCHIVE PORTFOLIO STYLE
 // ======================================================================== /
 .wrap-folio {
-    // padding-bottom: 30px;
-    //
-    // @media screen and ( min-width: $md ) {
-    //     padding-bottom: 60px;
-    // }
+    padding-top: 60px;
+    padding-bottom: 60px;
 
-
+    // ======================================================================== /
+    // PORTO PAGINATION
+    // ======================================================================== /
     .porto_pagination {
         display: block;
         text-align: center;
@@ -41,9 +107,9 @@
 
                 &:hover, &:active, &:focus {
                     text-decoration: none;
-                    border-color: $primary;
+                    border-color: $c777;
                     color: $w;
-                    background-color: $primary;
+                    background-color: $c777;
                 }
 
                 &.next, &.prev {
@@ -58,16 +124,18 @@
 
             &.current {
                 opacity: 0.35;
-                border-color: $primary;
+                border-color: $c777;
                 color: $w;
-                background-color: $primary;
+                background-color: $c777;
             }
         }
     }
-
 }
 
 
+// ======================================================================== /
+// PORTFOLIO ARCHIVE
+// ======================================================================== /
 .type-portfolio {
 
     .portfo_thumbnail,
@@ -181,10 +249,6 @@
             letter-spacing: 0.5px;
             line-height: 22px;
 
-            p {
-
-            }
-
             .read_more {
                 display: block;
                 margin-top: 30px;
@@ -216,7 +280,11 @@
                 }
             }
         }
-
     }
 
 }
+
+
+// ======================================================================== /
+// SINGLE PORTFOLIO
+// ======================================================================== /

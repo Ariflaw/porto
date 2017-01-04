@@ -1,4 +1,4 @@
-<div id="main_header" class="main_header">
+<div id="main_header" class="main_header header_folio">
     <div class="container clearfix">
         <div class="brand">
             <a class="logo logo_white" href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/Logo.png" /></a>
@@ -23,30 +23,38 @@
     </div>
 </div>
 
-<header id="hero" class="hero_header" <?php header_img_bg(); ?>>
-    <div class="container">
-        <?php if ( is_single() ): ?>
-            <div class="hero_content_single">
-                <div class="icon_post"><i class="icon icon-fire"></i></div>
-                <h1 class="entry-title"><?php the_title(); ?></h1>
-                <div class="hero_post_info">
-                    <time class="updated" datetime="<?= get_post_time('c', true); ?>">
-                        <i class="icon icon-clock"></i>
-                        <?= __('Post on ', 'porto'); ?><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?>
-                    </time>
-                    <span class="comment_info dot">
-                        <i class="icon icon-bubbles"></i>
-                        <?php printf( _nx( '1 Comment', '%1$s Comments', get_comments_number(), 'comments title', 'porto' ), number_format_i18n( get_comments_number() ) ); ?>
-                    </span>
-                    <span class="dot">
-                        <i class="icon icon-eye"></i> <?php echo getPostViews(get_the_ID()); ?>
-                    </span>
-                </div>
-            </div>
-        <?php else : ?>
-            <div class="hero_content">
-                <h1 class="entry-title"><?php echo __('Portfolio.'); ?></h1>
-            </div>
-        <?php endif; ?>
-    </div>
+
+<header class="hero_header_folio">
+    <?php if ( is_single() ): ?>
+        <div class="header_folio_single">
+            <!-- <?php the_post_thumbnail('full') ?> -->
+            <div class="icon_post"><i class="icon icon-ghost"></i></div>
+            <h1 class="entry-title"><?php the_title(); ?></h1>
+            <h3 class="entry-description">Awesome html template with fully customize</h3>
+
+            <ul class="folio_info">
+                <li class="folio_info_client">
+                    <span>Client: </span>
+                    Ariflaw
+                </li>
+                <li class="folio_info_date">
+                    <span>Date: </span>
+                    Desember 2016
+                </li>
+                <li class="folio_info_url">
+                    <span>Website: </span>
+                    www.ariflaw.com
+                </li>
+                <li class="folio_info_service">
+                    <span>Service: </span>
+                    Wordpress, Web Design
+                </li>
+            </ul>
+            <!-- <img src="http://localhost/ariflaw/wp-content/uploads/2016/12/Macup.jpg" alt=""> -->
+        </div>
+    <?php else : ?>
+        <div class="hero_content">
+            <h1 class="entry-title"><?php echo __('Portfolio.'); ?></h1>
+        </div>
+    <?php endif; ?>
 </header>

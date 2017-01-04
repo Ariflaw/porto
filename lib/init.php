@@ -103,6 +103,42 @@ function porto_categories() {
 endif;
 
 
+if ( ! function_exists( 'porto_categorized_blog' ) ) :
+/**
+ * Determines whether blog/site has more than one category.
+ *
+ * Create your own twentysixteen_categorized_blog() function to override in a child theme.
+ *
+ * @since Twenty Sixteen 1.0
+ *
+ * @return bool True if there is more than one category, false otherwise.
+ */
+function porto_categorized_blog() {
+	if ( false === ( $all_the_cool_cats = get_transient( 'porto_categories' ) ) ) {
+		// Create an array of all the categories that are attached to posts.
+		$all_the_cool_cats = get_categories( array(
+			'fields'     => 'ids',
+			// We only need to know if there is more than one category.
+			'number'     => 2,
+		) );
+
+		// Count the number of categories that are attached to the posts.
+		$all_the_cool_cats = count( $all_the_cool_cats );
+
+		set_transient( 'porto_categories', $all_the_cool_cats );
+	}
+
+	if ( $all_the_cool_cats > 1 ) {
+		// This blog has more than 1 category so twentysixteen_categorized_blog should return true.
+		return true;
+	} else {
+		// This blog has only 1 category so twentysixteen_categorized_blog should return false.
+		return false;
+	}
+}
+endif;
+
+
 /**
  * ============================================================================
  * TAGS POSTS

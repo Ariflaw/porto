@@ -1,9 +1,11 @@
 <?php while (have_posts()) : the_post(); ?>
-
-    <h1>Single Portolio</h1>
-
-    <header>
-        <?php get_template_part('templates/entry-meta'); ?>
+    <header class="sf-info">
+        <div class="client_info">
+            <span>b2evolution</span>
+        </div>
+        <div class="start_project">
+            <time>10-06-2016</time>
+        </div>
     </header>
     <article <?php post_class(); ?>>
         <div class="entry-content">
@@ -20,11 +22,7 @@
     <footer>
         <?php comments_template('/templates/comments.php'); ?>
     </footer>
-
 <?php endwhile; ?>
-
-<!-- <div class="pagination">
-    <?php the_post_navigation(); ?>
-</div> -->
+<?php the_post_navigation(); ?>
 
 <?php setPostViews(get_the_ID()); ?>
