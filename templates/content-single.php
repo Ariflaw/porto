@@ -18,8 +18,7 @@
     <footer>
         <?php comments_template('/templates/comments.php'); ?>
     </footer>
-
 <?php endwhile; ?>
-<?php the_post_navigation(); ?>
+
 
 <?php setPostViews(get_the_ID()); ?>

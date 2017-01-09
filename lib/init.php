@@ -141,6 +141,56 @@ endif;
 
 /**
  * ============================================================================
+ * CATEGORY POST TYPE
+ * ============================================================================
+ */
+function category_post_type( $id ) {
+
+    $terms = get_the_terms( get_the_ID(), $id );
+    if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+        $count = count( $terms );
+        $i = 0;
+        $term_list = '<ul class="pt_category">';
+        foreach ( $terms as $term ) {
+            $i++;
+            $term_list .= '<li><a href="' . esc_url( get_term_link( $term ) ) . '" alt="' . esc_attr( sprintf( __( 'View all post filed under %s', 'my_localization_domain' ), $term->name ) ) . '">' . $term->name . '</a></li>';
+            if ( $count != $i ) {
+                $term_list .= ' &middot; ';
+            }
+            else {
+                $term_list .= '</ul>';
+            }
+        }
+        echo $term_list;
+    }
+}
+
+
+/**
+ * ============================================================================
+ * CATEGORY FOR DEFAULT TAXONOMY TERM FOR CUSTOM POST TYPE
+ * https://circlecube.com/says/2013/01/set-default-terms-for-your-custom-taxonomy-default/
+ * https://gist.github.com/mayeenulislam/f208b4fd408fd4742c06
+ * ============================================================================
+ */
+function portfolio_set_default_object_terms( $post_id, $post ) {
+    if ( 'publish' === $post->post_status && $post->post_type === 'portfolio' ) {
+        $defaults = array(
+            'portfolio-category' => array( 'web-development' ),
+        );
+        $taxonomies = get_object_taxonomies( $post->post_type );
+        foreach ( (array) $taxonomies as $taxonomy ) {
+            $terms = wp_get_post_terms( $post_id, $taxonomy );
+            if ( empty( $terms ) && array_key_exists( $taxonomy, $defaults ) ) {
+                wp_set_object_terms( $post_id, $defaults[$taxonomy], $taxonomy );
+            }
+        }
+    }
+}
+add_action( 'save_post', 'portfolio_set_default_object_terms', 100, 2 );
+
+/**
+ * ============================================================================
  * TAGS POSTS
  * ============================================================================
  */
@@ -333,6 +383,65 @@ if( !function_exists( 'porto_pagination' ) ) :
 endif;
 
 
+if ( ! function_exists( 'pagination_nav' ) ) :
+/*
+ * How to add numeric pagination in your WordPress theme
+ * http://www.wpbeginner.com/wp-themes/how-to-add-numeric-pagination-in-your-wordpress-theme/
+ */
+function pagination_nav() {
+    if( is_singular() )
+        return;
+    global $wp_query;
+    /* Stop the code if there is only a single page page */
+    if( $wp_query->max_num_pages <= 1 )
+        return;
+    $paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
+    $max   = intval( $wp_query->max_num_pages );
+    /*Add current page into the array */
+    if ( $paged >= 1 )
+        $links[] = $paged;
+    /*Add the pages around the current page to the array */
+    if ( $paged >= 3 ) {
+        $links[] = $paged - 1;
+        $links[] = $paged - 2;
+    }
+    if ( ( $paged + 2 ) <= $max ) {
+        $links[] = $paged + 2;
+        $links[] = $paged + 1;
+    }
+    echo '<div class="navigation"><ul>' . "\n";
+    /*Display Previous Post Link */
+    if ( get_previous_posts_link() )
+        printf( '<li>%s</li>' . "\n", get_previous_posts_link( esc_html('Prev') ) );
+    /*Display Link to first page*/
+    if ( ! in_array( 1, $links ) ) {
+        $class = 1 == $paged ? ' class="active"' : '';
+        printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
+        if ( ! in_array( 2, $links ) )
+            echo '<li>…</li>';
+    }
+    /* Link to current page */
+    sort( $links );
+    foreach ( (array) $links as $link ) {
+        $class = $paged == $link ? ' class="active"' : '';
+        // printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+        printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+    }
+    /* Link to last page, plus ellipses if necessary */
+    if ( ! in_array( $max, $links ) ) {
+        if ( ! in_array( $max - 1, $links ) )
+            echo '<li><span>…</span></li>' . "\n";
+        $class = $paged == $max ? ' class="active"' : '';
+        printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
+    }
+    /** Next Post Link */
+    if ( get_next_posts_link() )
+        printf( '<li>%s</li>' . "\n", get_next_posts_link( esc_html('Next') ) );
+    echo '</ul></div>' . "\n";
+}
+endif;
+
+
 /**
  * ============================================================================
  * BACKGROUND COLOR FOR CATEGORY
@@ -388,3 +497,18 @@ function save_extra_category_fileds( $term_id ) {
 }
 add_action('edited_category', 'save_extra_category_fileds');
 add_action('created_category', 'save_extra_category_fileds', 11, 1);
+
+
+/**
+ * ============================================================================
+ * REMOVE AUTO PARAS ONLY FOR CPTS
+ * http://wpcrux.com/disable-wpautop/
+ * ============================================================================
+ */
+
+function filter_ptags_on_images($content){
+   return preg_replace('/<p>\s*(<a .*?><img .*?><\/a>|<img .*?>)\s*(.*?)\s*<\/p>/s', '\1\2\3', $content);
+
+}
+
+add_filter('the_content', 'filter_ptags_on_images');

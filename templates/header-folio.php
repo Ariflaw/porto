@@ -30,27 +30,36 @@
             <!-- <?php the_post_thumbnail('full') ?> -->
             <div class="icon_post"><i class="icon icon-ghost"></i></div>
             <h1 class="entry-title"><?php the_title(); ?></h1>
-            <h3 class="entry-description">Awesome html template with fully customize</h3>
+            <?php if( ! empty(rwmb_meta( 'client-description' )) ) : ?>
+            <h3 class="entry-description"><?php echo rwmb_meta( 'client-description' ); ?></h3>
+            <?php endif; ?>
 
+            <?php if( rwmb_meta( 'client-info-show' ) == 1 ): ?>
             <ul class="folio_info">
+                <?php if( ! empty( rwmb_meta('client-folio')) ) : ?>
                 <li class="folio_info_client">
-                    <span>Client: </span>
-                    Ariflaw
+                    <label><?php echo _e( 'Client', 'porto' ); ?></label>
+                    <span><?php echo rwmb_meta( 'client-folio' ); ?></span>
                 </li>
+                <?php endif; ?>
+                <?php if( ! empty( rwmb_meta('star-project-folio')) ) : ?>
                 <li class="folio_info_date">
-                    <span>Date: </span>
-                    Desember 2016
+                    <label><?php echo _e( 'Date', 'porto' ); ?></label>
+                    <span><?php echo rwmb_meta( 'star-project-folio' ); ?></span>
                 </li>
+                <?php endif; ?>
+                <?php if( ! empty( rwmb_meta('url-project')) ) : ?>
                 <li class="folio_info_url">
-                    <span>Website: </span>
-                    www.ariflaw.com
+                    <label><?php echo _e( 'Website', 'porto' ); ?></label>
+                    <span><a href="<?php echo rwmb_meta( 'url-project' ) ?>" rel="nofollow" target="_blank"><?php echo rwmb_meta( 'url-project' ) ?></a></span>
                 </li>
+                <?php endif; ?>
                 <li class="folio_info_service">
-                    <span>Service: </span>
-                    Wordpress, Web Design
+                    <label><?php echo _e( 'Category' ); ?></label>
+                    <?php echo category_post_type( 'portfolio-category' ); ?>
                 </li>
             </ul>
-            <!-- <img src="http://localhost/ariflaw/wp-content/uploads/2016/12/Macup.jpg" alt=""> -->
+            <?php endif; ?>
         </div>
     <?php else : ?>
         <div class="hero_content">

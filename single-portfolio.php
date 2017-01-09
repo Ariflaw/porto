@@ -1,12 +1,4 @@
 <?php while (have_posts()) : the_post(); ?>
-    <header class="sf-info">
-        <div class="client_info">
-            <span>b2evolution</span>
-        </div>
-        <div class="start_project">
-            <time>10-06-2016</time>
-        </div>
-    </header>
     <article <?php post_class(); ?>>
         <div class="entry-content">
             <?php the_content(); ?>
@@ -23,6 +15,12 @@
         <?php comments_template('/templates/comments.php'); ?>
     </footer>
 <?php endwhile; ?>
-<?php the_post_navigation(); ?>
+
+<div class="ps_pagination">
+    <li class="prev_nav"><?php previous_post_link( '%link', '<i class="icon-arrow-left"></i> Prev <span>%title</span>' ); ?></li>
+    <li><a href="<?php echo get_post_type_archive_link( 'portfolio' ); ?>"><i class="icon-grid"></i></a></li>
+    <li class="next_nav"><?php next_post_link( '%link', 'Next Portfolio <i class="icon-arrow-right"></i>' ); ?></li>
+</div>
+
 
 <?php setPostViews(get_the_ID()); ?>

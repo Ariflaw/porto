@@ -219,10 +219,11 @@
 // ======================================================================== /
 .entry-content ,
 .post-type-post,
-.comment-content {
+.comment-content,
+.post-type-portfolio {
     color: $c777;
     letter-spacing: 0.3px;
-    line-height: 24px;
+    line-height: 22px;
 
     h1, h2, h3, h4, h5, h6 {
         color: $color_title;

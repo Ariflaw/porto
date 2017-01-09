@@ -1,16 +1,5 @@
 <?php
-
-$grid = '';
-if ( has_post_thumbnail() ) {
-    $grid = 'col-md-6';
-} else {
-    $grid = 'col-md-12';
-    $thumb_class = 'no_thumbnail';
-}
-
-
 $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
-
 $args = array(
     'post_type'         => 'portfolio',
     'posts_per_page'    => 5,
@@ -27,7 +16,7 @@ if ( $loop->have_posts() ) :
                 <?php porto_post_thumbnail(); ?>
             </div>
         <?php endif; ?>
-        <div class="portfo_content <?php echo $grid; ?>">
+        <div class="portfo_content col-md-6">
             <header>
                 <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
             </header>

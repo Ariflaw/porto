@@ -9,15 +9,34 @@ function your_prefix_meta_boxes( $meta_boxes ) {
         // 'autosave'   => true,
         'fields'     => array(
             array(
+                'id'   =>'client-info-show',
+				'name' => esc_html__( 'Show the Portfolio Info', 'your-prefix' ),
+				'type' => 'checkbox',
+				// Value can be 0 or 1
+				'std'  => 0,
+			),
+			array(
+				'type' => 'heading',
+				'name' => esc_html__( 'Portfolio Info', 'your-prefix' ),
+				'desc' => esc_html__( 'Check the Portfolio info to showed', 'your-prefix' ),
+			),
+            array(
                 'id'   => 'client-folio',
                 'name' => __( 'Client', 'textdomain' ),
                 'type' => 'text',
-                'desc' => esc_html__( 'Type the client owner', 'your-prefix' ),
+                'desc' => esc_html__( 'Who the client owner', 'your-prefix' ),
                 'placeholder' => esc_html__( 'Jhone Doe', 'your-prefix' ),
             ),
+            array(
+                'id'   => 'client-description',
+                'name' => __( 'Description', 'textdomain' ),
+                'type' => 'textarea',
+                'desc' => esc_html__( 'Sort Description for project.', 'your-prefix' ),
+                'placeholder' => esc_html__( 'Write what you want about this project.', 'your-prefix' ),
+            ),
 			array(
-				'name' => esc_html__( 'Launch project', 'your-prefix' ),
 				'id'   => "url-project",
+				'name' => esc_html__( 'URL project', 'your-prefix' ),
 				'desc' => esc_html__( 'Set your launch project website/link', 'your-prefix' ),
 				'type' => 'url',
 			),
@@ -28,11 +47,11 @@ function your_prefix_meta_boxes( $meta_boxes ) {
 
                 // jQuery date picker options. See here http://api.jqueryui.com/datepicker
                 'js_options' => array(
-                    'appendText'      => esc_html__( '(yyyy-mm-dd)', 'your-prefix' ),
-                    'dateFormat'      => esc_html__( 'yy-mm-dd', 'your-prefix' ),
+                    'appendText'      => esc_html__( '(mm-yy)', 'your-prefix' ),
+                    'dateFormat'      => esc_html__( 'MM yy', 'your-prefix' ),
                     'changeMonth'     => true,
                     'changeYear'      => true,
-                    'showButtonPanel' => true,
+					'showButtonPanel' => true,
                 ),
             ),
             array(
