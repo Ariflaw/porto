@@ -1,4 +1,8 @@
 <?php
+
+// $al_cat_slug = get_queried_object()->slug;
+// $al_cat_name = get_queried_object()->name;
+
 $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 $args = array(
     'post_type'         => 'portfolio',

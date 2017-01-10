@@ -128,7 +128,7 @@ function your_prefix_register_meta_boxes( $meta_boxes ) {
 		'title'      => esc_html__( 'Standard Fields', 'your-prefix' ),
 
 		// Post types, accept custom post types as well - DEFAULT is 'post'. Can be array (multiple post types) or string (1 post type). Optional.
-		'post_types' => array( 'post', 'page' ),
+		// 'post_types' => array( 'post', 'page' ),
 
 		// Where the meta box appear: normal (default), advanced, side. Optional.
 		'context'    => 'normal',

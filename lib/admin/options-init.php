@@ -299,10 +299,10 @@
         'subtitle' => __( 'Specify the body font properties.', 'redux-framework-demo' ),
         'google'   => true,
         'default'  => array(
-            'color'       => '#dd9933',
-            'font-size'   => '30px',
-            'font-family' => 'Arial,Helvetica,sans-serif',
-            'font-weight' => 'Normal',
+            'color'       => '#4C4C4C',
+            'font-size'   => '15px',
+            'font-family' => 'Lato',
+            'font-weight' => 'Normal 400',
             ),
         ),
         array(

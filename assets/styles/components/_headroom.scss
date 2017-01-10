@@ -1,7 +1,7 @@
 // ======================================================================== /
 // HEADER FIXED AND HEADROOM CLASS
 // ======================================================================== /
-.logged-in {
+.logged-in.admin-bar {
     @media screen and ( min-width: 600px ) {
         .main_header.headroom--not-top {
             top: 32px;

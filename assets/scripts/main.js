@@ -35,22 +35,27 @@
                         "tolerance": 10,
                         "classes": {
                             "initial": "animated",
-                            "pinned": "swingInX",
-                            "unpinned": "swingOutX",
-                            // "pinned": "slideDown",
-                            // "unpinned": "slideUp",
+                            // "pinned": "swingInX",
+                            // "unpinned": "swingOutX",
+                            "pinned": "slideDown",
+                            "unpinned": "slideUp",
                         },
 
                         onUnpin: function() {
                             if ( $(window).width() <= 992 ) {
                                 if ( isNavVisible(nav) ) {
+                                    this.elem.classList.remove(this.classes.initial);
                                     this.elem.classList.remove(this.classes.unpinned);
                                     this.elem.classList.add(this.classes.pinned);
                                 }
                                 else {
+                                    this.elem.classList.add(this.classes.initial);
                                     this.elem.classList.add(this.classes.unpinned);
                                     this.elem.classList.remove(this.classes.pinned);
                                 }
+                            } else {
+                                this.elem.classList.add(this.classes.initial);
+                                this.elem.classList.add(this.classes.unpinned);
                             }
                         }
                     };

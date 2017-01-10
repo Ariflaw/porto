@@ -81,6 +81,11 @@
         .nav {
             display: block;
 
+            @media screen and ( max-width: $md ) {
+                height: 82vh;
+                overflow-y: auto;
+            }
+
             @media screen and ( min-width: $lg ) {
                 display: inline-block;
             }
